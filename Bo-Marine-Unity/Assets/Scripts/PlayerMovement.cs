@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Pointer()
     {
-        float rangeZ = transform.FindChild("Range").position.z;
+        float rangeZ = transform.Find("Range").position.z;
 
         if (schieten.kanVuren)
         {
