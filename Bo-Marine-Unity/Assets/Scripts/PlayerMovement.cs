@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (schieten.kanVuren)
         {
-            rangeZ = 100;
+            rangeZ = 100; //100
         }
         else
         {
