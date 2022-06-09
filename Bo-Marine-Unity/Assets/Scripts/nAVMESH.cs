@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
 public class nAVMESH : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
+
+    [Header("AI Animations")]
+    private Animator animator;
 
     [Header("Patrolling")]
     [SerializeField] Vector3 walkPoint;
@@ -29,6 +33,7 @@ public class nAVMESH : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -40,6 +45,7 @@ public class nAVMESH : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
+
     void Patrolling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -67,6 +73,7 @@ public class nAVMESH : MonoBehaviour
     void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        animator.SetTrigger("walk animation"); 
     }
     void AttackPlayer()
     {
