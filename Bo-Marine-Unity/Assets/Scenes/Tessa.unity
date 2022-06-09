@@ -1019,6 +1019,25 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &1141408153
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141408148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1167536529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1453,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 49.922714
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1459,13 +1478,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123791251}
-  m_LocalRotation: {x: 0.1655571, y: -0, z: -0, w: 0.9862002}
-  m_LocalPosition: {x: -7.68, y: 4.84, z: -6.19}
+  m_LocalRotation: {x: 0.4225538, y: -0, z: -0, w: 0.9063379}
+  m_LocalPosition: {x: -7.68, y: 32.2, z: -8.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 19.059, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 49.992, y: 0, z: 0}
 --- !u!114 &2123791255
 MonoBehaviour:
   m_ObjectHideFlags: 0
