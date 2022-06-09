@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
+    LineRenderer lr;
 
-    [SerializeField] float cameraSpeed = 5;
+    public Transform range;
+
+    [SerializeField] float cameraSpeed = 10;
     [SerializeField] float walkSpeed = 10;
     [SerializeField] float jumpForce = 10;
     [SerializeField] float jumpHeight = 0.5f;
@@ -15,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        lr = GetComponent<LineRenderer>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         Walk();
         GroundedCheck();
         Jump();
+        Pointer();
     }
 
     void Walk()
@@ -40,8 +45,6 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, Vector3.down);
-
-        //Debug.DrawRay(transform.position, Vector3.down * jumpHeight, Color.green);
 
         if (Physics.Raycast(ray, out hit, jumpHeight))
         {
@@ -69,6 +72,23 @@ public class PlayerMovement : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X");
 
-        transform.Rotate(0, mouseX * cameraSpeed, 0);
+        transform.Rotate(0, mouseX * (cameraSpeed * Time.deltaTime), 0);
+    }
+
+    void Pointer()
+    {
+        float rangeZ = transform.Find("Range").position.z;
+
+        if (schieten.kanVuren)
+        {
+            rangeZ = 100; //100
+        }
+        else
+        {
+            rangeZ = 0;
+        }
+
+        lr.SetPosition(0, new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        lr.SetPosition(1, new Vector3(range.transform.position.x, range.transform.position.y, range.transform.position.z));
     }
 }

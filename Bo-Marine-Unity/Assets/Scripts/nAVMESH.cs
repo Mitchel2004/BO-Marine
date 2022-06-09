@@ -74,21 +74,21 @@ public class nAVMESH : MonoBehaviour
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
-        if (!alreadyAttacked)
+        /*if (!alreadyAttacked)
         {
-            // attack code 
-            /*Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            //attack code 
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);*/
-        }
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }*/
     }
-    /*void ResetAttack()
+    void ResetAttack()
     {
         alreadyAttacked = false;
-    }*/
+    }
 
     public void TakeDamage(int damage)
     {
