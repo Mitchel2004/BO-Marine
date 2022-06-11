@@ -24,7 +24,7 @@ public class schieten : MonoBehaviour
             shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             kanVuren = true;
         }
