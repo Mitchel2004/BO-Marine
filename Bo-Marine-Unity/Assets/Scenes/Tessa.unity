@@ -197,8 +197,6 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
   timeBetweenAttacks: 5
   sightRange: 20
   attackRange: 15
@@ -278,6 +276,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 0.7, z: 1}
   m_Center: {x: -2.11, y: 3.46, z: 0}
+--- !u!114 &315369824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315369816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e17d25514b9bd4b816c10743dd4330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &386270337
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,12 +394,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 386270337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 552b1098351714447a24a0ef1fe32dad, type: 3}
+  m_Script: {fileID: 11500000, guid: 26cc1e09bb188c1469e9117cc5a7ba0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 2
-  jump: {x: 0, y: 0, z: 0}
+  range: {fileID: 386270341}
+  cameraSpeed: 500
+  walkSpeed: 20
+  jumpForce: 10
+  jumpHeight: 0.5
 --- !u!54 &386270343
 Rigidbody:
   m_ObjectHideFlags: 0

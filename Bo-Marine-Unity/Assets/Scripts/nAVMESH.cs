@@ -12,15 +12,12 @@ public class nAVMESH : MonoBehaviour
     [Header("AI Animations")]
     private Animator animator;
 
-    [Header("Patrolling")]
-    bool walkPointSet;
-
     [Header("Attacking")]
     [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
 
     [Header("States")]
-    [SerializeField] float sightRange, attackRange;
+    public float sightRange, attackRange;
     bool playerInSightRange, playerInAttackRange;
 
     [Header("Enemy")]
@@ -32,33 +29,23 @@ public class nAVMESH : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
-
     private void Update()
     {
         //check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (!playerInSightRange && !playerInAttackRange) Idle();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
-
-    void Idle()
-    {
-        animator.Play("Idle");
-    }
-   
     void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        animator.SetTrigger("Walking"); 
     }
     void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         transform.LookAt(player);
-        animator.SetTrigger("Attack");
 
         if (!alreadyAttacked)
         {
@@ -92,7 +79,7 @@ public class nAVMESH : MonoBehaviour
 
     private void Death()
     {
-        animator.SetTrigger("Death");
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()

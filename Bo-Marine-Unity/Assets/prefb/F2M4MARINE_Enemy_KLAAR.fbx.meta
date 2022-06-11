@@ -68,8 +68,8 @@ ModelImporter:
       name: metarig|ALLE_ANIMATIES
       takeName: metarig|ALLE_ANIMATIES
       internalID: 0
-      firstFrame: 0
-      lastFrame: 699
+      firstFrame: 160
+      lastFrame: 280
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
