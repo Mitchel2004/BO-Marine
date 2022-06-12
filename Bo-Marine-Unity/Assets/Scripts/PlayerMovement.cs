@@ -9,24 +9,20 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform range;
 
-    [SerializeField] float cameraSpeed = 10;
-    [SerializeField] float walkSpeed = 10;
-    [SerializeField] float jumpForce = 10;
-    [SerializeField] float jumpHeight = 0.5f;
+    [SerializeField] float walkSpeed = 10f;
+    [SerializeField] float rotateSpeed = 10f;
+    [SerializeField] float jumpForce = 5f;
+    [SerializeField] float jumpHeight = 0.1f;
     bool canJump;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         lr = GetComponent<LineRenderer>();
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void FixedUpdate()
     {
-        Spectate();
         Walk();
         GroundedCheck();
         Jump();
@@ -38,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        transform.Translate(new Vector3(x, 0, z) * (walkSpeed * Time.deltaTime));
+        transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
+        transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
     }
 
     void GroundedCheck()
@@ -68,27 +65,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Spectate()
-    {
-        float mouseX = Input.GetAxis("Mouse X");
-
-        transform.Rotate(0, mouseX * (cameraSpeed * Time.deltaTime), 0);
-    }
-
     void Pointer()
     {
-        float rangeZ = transform.Find("Range").position.z;
+        lr.SetPosition(0, new Vector3(transform.position.x, range.transform.position.y, transform.position.z));
 
         if (schieten.kanVuren)
         {
-            rangeZ = 100; //100
+            lr.SetPosition(1, new Vector3(range.transform.position.x, range.transform.position.y, range.transform.position.z));
         }
         else
         {
-            rangeZ = 0;
+            lr.SetPosition(1, new Vector3(transform.position.x, range.transform.position.y, transform.position.z));
         }
-
-        lr.SetPosition(0, new Vector3(transform.position.x, transform.position.y, transform.position.z));
-        lr.SetPosition(1, new Vector3(range.transform.position.x, range.transform.position.y, range.transform.position.z));
     }
 }
