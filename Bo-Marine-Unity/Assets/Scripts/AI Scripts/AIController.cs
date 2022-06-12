@@ -6,11 +6,11 @@ public class AIController : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float chaseRange = 5f;
+    [SerializeField] float turnSpeed = 5f;
 
     NavMeshAgent agent;
     float distanceToTarget = Mathf.Infinity;
     bool isProvroked = false;
-    
 
     private void Start()
     {
@@ -32,6 +32,7 @@ public class AIController : MonoBehaviour
 
     void EngageTarget()
     {
+        FaceTarget();
         if (distanceToTarget >= agent.stoppingDistance)
         {
             ChaseTarget();
@@ -54,10 +55,15 @@ public class AIController : MonoBehaviour
         GetComponent<Animator>().SetBool("Attack", true);
         Debug.Log(name + "has seeked and is destroying" + target.name);
     }
-
+    void FaceTarget()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);       
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 }
