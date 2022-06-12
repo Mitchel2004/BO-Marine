@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleBossAnimation : MonoBehaviour
+public class BossAnimation : MonoBehaviour
 {
     [Header("States animation")]
     Animator _animator;

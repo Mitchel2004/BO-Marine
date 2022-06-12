@@ -197,6 +197,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
   timeBetweenAttacks: 5
   sightRange: 20
   attackRange: 15
@@ -578,7 +580,7 @@ Transform:
   - {fileID: 386270341}
   - {fileID: 79712165}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &921833962
 GameObject:
@@ -984,7 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075827571}
   m_Layer: 0
-  m_Name: Color System
+  m_Name: Puzzel system
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -998,12 +1000,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075827570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.143327, y: 4.6463623, z: 15.78}
+  m_LocalPosition: {x: -5.3, y: 7, z: 3.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479508105}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167536529
 GameObject:
@@ -1334,7 +1336,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012125175
 GameObject:
@@ -1366,7 +1368,7 @@ Transform:
   - {fileID: 1066201691}
   - {fileID: 1908823658}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2013691417
 PrefabInstance:
@@ -1397,7 +1399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
       propertyPath: m_LocalPosition.z

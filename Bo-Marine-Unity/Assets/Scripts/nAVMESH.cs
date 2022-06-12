@@ -9,6 +9,11 @@ public class nAVMESH : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] LayerMask whatIsGround, whatIsPlayer;
 
+    [Header("Patrolling")]
+    [SerializeField] Vector3 walkPoint;
+    [SerializeField] float walkPointRange;
+    bool walkPointSet;
+
     [Header("AI Animations")]
     private Animator animator;
 
@@ -34,8 +39,33 @@ public class nAVMESH : MonoBehaviour
         //check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+    }
+    void Patrolling()
+    {
+        if (!walkPointSet) SearchWalkPoint();
+        if (walkPointSet)
+            agent.SetDestination(walkPoint);
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        //Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1)
+        {
+            walkPointSet = false;
+        }           
+    }
+    void SearchWalkPoint()
+    {
+        //calculate ramdom point in range
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) 
+        {
+            walkPointSet = true;
+        }            
     }
     void ChasePlayer()
     {
@@ -62,22 +92,12 @@ public class nAVMESH : MonoBehaviour
     {
         alreadyAttacked = false;
     }
-
     public void TakeDamage(float damage)
     {
-        if (health <= 0)
-        {
-            return;
-        }
-
         health -= damage;
-        if (health <= 0)
-        {
-            Death();
-        }
+        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
-
-    private void Death()
+    private void DestroyEnemy()
     {
         Destroy(gameObject);
     }
