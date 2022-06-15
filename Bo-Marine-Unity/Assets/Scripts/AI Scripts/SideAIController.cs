@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class AIController : MonoBehaviour
+public class SideAIController : MonoBehaviour
 {
-    public Transform target;
+    [SerializeField] Transform target;
     [SerializeField] float chaseRange = 5f;
     [SerializeField] float turnSpeed = 5f;
 
     NavMeshAgent agent;
     float distanceToTarget = Mathf.Infinity;
     bool isProvroked = false;
-
-    //AI geeft damage aan de speler
-    [SerializeField] float playerDamage = 100f;
 
     private void Start()
     {
@@ -49,7 +46,7 @@ public class AIController : MonoBehaviour
     void ChaseTarget()
     {
         GetComponent<Animator>().SetBool("Attack", false);
-        GetComponent<Animator>().SetTrigger("Walking");
+        GetComponent<Animator>().SetTrigger("Run");
         agent.SetDestination(target.position);
     }
 
