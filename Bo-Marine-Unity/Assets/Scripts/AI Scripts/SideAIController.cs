@@ -12,6 +12,9 @@ public class SideAIController : MonoBehaviour
     float distanceToTarget = Mathf.Infinity;
     bool isProvroked = false;
 
+    //Damage for the player
+    public float playerDamage = 100f;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();

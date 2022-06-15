@@ -13,7 +13,7 @@ public class AIController : MonoBehaviour
     bool isProvroked = false;
 
     //AI geeft damage aan de speler
-    [SerializeField] float playerDamage = 100f;
+    public float playerDamage = 100f;
 
     private void Start()
     {

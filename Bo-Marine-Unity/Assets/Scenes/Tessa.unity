@@ -268,6 +268,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 0.7, z: 1}
   m_Center: {x: -2.11, y: 3.46, z: 0}
+--- !u!114 &315369824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315369816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164def6dae218534db45b89b406ba4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
 --- !u!54 &315369825
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -376,7 +389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386270337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9, y: 1.83, z: -22.3}
+  m_LocalPosition: {x: -16.6, y: 1.83, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1527,7 +1540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
       propertyPath: m_Name
-      value: F2M4MARINE_Enemy_KLAAR
+      value: Final Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
@@ -1584,7 +1597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: afb1e136d29e5774ebf018dfc5b6ae37, type: 3}
       propertyPath: m_Name
-      value: F2M4MARINE_Side_Enemy_Animation_FIN
+      value: Side Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb1e136d29e5774ebf018dfc5b6ae37, type: 3}
@@ -1662,6 +1675,19 @@ MonoBehaviour:
   target: {fileID: 386270341}
   chaseRange: 10
   turnSpeed: 5
+--- !u!114 &2108626995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108626990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164def6dae218534db45b89b406ba4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!1 &2123791251
 GameObject:
   m_ObjectHideFlags: 0
