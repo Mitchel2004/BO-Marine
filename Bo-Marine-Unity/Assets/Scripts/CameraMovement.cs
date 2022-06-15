@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject cameraPoint;
     [SerializeField] float cameraSpeed = 100;
 
     void Start()
@@ -20,10 +20,8 @@ public class CameraMovement : MonoBehaviour
 
     void Camera()
     {
-        float x = Input.GetAxis("Mouse X") * (cameraSpeed * Time.deltaTime);
+        //float x = Input.GetAxis("Mouse X") * (cameraSpeed * Time.deltaTime);
         float y = Input.GetAxis("Mouse Y") * (cameraSpeed * Time.deltaTime);
-
-        transform.RotateAround(player.transform.position, Vector3.up, x);
 
         /*if (transform.rotation.eulerAngles.y <= 45 || transform.rotation.eulerAngles.y >= 315)
         {
@@ -37,18 +35,18 @@ public class CameraMovement : MonoBehaviour
         {
             transform.RotateAround(player.transform.position, Vector3.up, 1);
         }*/
-
-        if (transform.rotation.eulerAngles.x <= 45 || transform.rotation.eulerAngles.x >= 315)
+        
+        if (transform.rotation.eulerAngles.x <= 45 || transform.rotation.eulerAngles.x >= 345)
         {
-            transform.RotateAround(player.transform.position, Vector3.left, y);
+            transform.RotateAround(cameraPoint.transform.position, Vector3.left, y);
         }
         else if (transform.rotation.eulerAngles.x < 180)
         {
-            transform.RotateAround(player.transform.position, Vector3.right, -1);
+            transform.RotateAround(cameraPoint.transform.position, Vector3.left, 1);
         }
         else if (transform.rotation.eulerAngles.x > 180)
         {
-            transform.RotateAround(player.transform.position, Vector3.left, -1);
+            transform.RotateAround(cameraPoint.transform.position, Vector3.left, -1);
         }
 
         Quaternion quaternion = transform.rotation;

@@ -431,7 +431,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340816986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197ff8e8baf17f14baccbd0ba704f0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 848915933}
+  cameraPoint: {fileID: 848915933}
   cameraSpeed: 750
 --- !u!1 &1831614664
 GameObject:
@@ -5416,6 +5416,7 @@ GameObject:
   - component: {fileID: 5549068871305093325}
   - component: {fileID: 837699851598626941}
   - component: {fileID: 4290994262224871390}
+  - component: {fileID: 4290994262224871391}
   m_Layer: 0
   m_Name: Alice Dee
   m_TagString: Untagged
@@ -5437,6 +5438,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7633578891293831147, guid: 20bb8c749d45bde4fbb617ae24a5266e, type: 3}
+--- !u!95 &4290994262224871391
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290994262224871389}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b92e9db327fa7340b7ec6b815c37522, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4960032582890463328
 GameObject:
   m_ObjectHideFlags: 0
