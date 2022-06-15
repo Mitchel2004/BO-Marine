@@ -57,6 +57,7 @@ public class SideAIController : MonoBehaviour
     {
         GetComponent<Animator>().SetBool("Attack", true);
         Debug.Log(name + "has seeked and is destroying" + target.name);
+
     }
     void FaceTarget()
     {
