@@ -6,7 +6,6 @@ public class AIController : MonoBehaviour
 {
     public Transform target;
     [SerializeField] float chaseRange = 5f;
-    [SerializeField] float attackRange = 5f;
     [SerializeField] float turnSpeed = 5f;
 
     NavMeshAgent agent;
@@ -15,6 +14,11 @@ public class AIController : MonoBehaviour
 
     //AI geeft damage aan de speler
     public float playerDamage = 100f;
+
+    //hit the player with AI
+    private bool ableToHit;
+    internal bool hit;
+    private object traget;
 
     private void Start()
     {
@@ -29,10 +33,6 @@ public class AIController : MonoBehaviour
             EngageTarget();
         }
         else if(distanceToTarget <= chaseRange)
-        {
-            isProvroked = true;
-        }
-        else if (distanceToTarget <= attackRange)
         {
             isProvroked = true;
         }
@@ -61,13 +61,6 @@ public class AIController : MonoBehaviour
     void AttackTarget()
     {
         GetComponent<Animator>().SetBool("Attack", true);
-
-        /*target targetPlayer = Player.transform.GetComponent<HealthPlayer>();
-        if (gameObject.tag == "Player")
-        {
-            targetPlayer.takeDamage(playerDamage);
-        }*/
-
         Debug.Log(name + " has seeked and is destroying " + target.name);
     }
     void FaceTarget()
@@ -75,6 +68,21 @@ public class AIController : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        target target = other.transform.GetComponent<target>();
+        if (other.gameObject.tag == "enemy")
+        {
+            hit = true;
+           
+            if (ableToHit == true)
+            {
+                ableToHit = false;
+            }
+            target.takeDamage(playerDamage);
+        }
     }
     private void OnDrawGizmosSelected()
     {
