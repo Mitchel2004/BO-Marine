@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     LineRenderer lr;
 
     public Transform range;
+    public Animator animator;
 
     [SerializeField] float walkSpeed = 10f;
     [SerializeField] float rotateSpeed = 100f;
@@ -27,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
         GroundedCheck();
         Jump();
         Pointer();
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            animator.CrossFade("Jump", 0f);
+        }
     }
 
     void Walk()
