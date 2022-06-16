@@ -7,7 +7,7 @@ public class schieten : MonoBehaviour
     internal float range = 100f;
     internal float impactForce = 60f;
     private int bullets = 3;
-    public bool canFire = false;
+    public static bool canFire = false;
     private float timer = 2f;
 
     [SerializeField] Camera fpsCam;

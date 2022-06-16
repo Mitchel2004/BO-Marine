@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     LineRenderer lr;
 
     public Transform range;
+    public Animator animator;
 
     [SerializeField] float walkSpeed = 10f;
     [SerializeField] float rotateSpeed = 100f;
@@ -27,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
         GroundedCheck();
         Jump();
         Pointer();
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            animator.CrossFade("Jump", 0f);
+        }
     }
 
     void Walk()
@@ -69,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         lr.SetPosition(0, new Vector3(transform.position.x, range.transform.position.y, transform.position.z));
 
-        if (schieten.kanVuren)
+        if (schieten.canFire)
         {
             lr.SetPosition(1, new Vector3(range.transform.position.x, range.transform.position.y, range.transform.position.z));
         }
