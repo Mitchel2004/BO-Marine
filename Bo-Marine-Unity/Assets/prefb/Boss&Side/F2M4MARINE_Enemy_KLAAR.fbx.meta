@@ -98,7 +98,7 @@ ModelImporter:
       takeName: metarig|ALLE_ANIMATIES
       internalID: 0
       firstFrame: 20
-      lastFrame: 125
+      lastFrame: 122
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -155,7 +155,7 @@ ModelImporter:
       name: metarig|Walk
       takeName: metarig|ALLE_ANIMATIES
       internalID: 0
-      firstFrame: 230
+      firstFrame: 295
       lastFrame: 477
       wrapMode: 0
       orientationOffsetY: 0

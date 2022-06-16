@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     {
         lr.SetPosition(0, new Vector3(transform.position.x, range.transform.position.y, transform.position.z));
 
-        if (schieten.kanVuren)
+        if (schieten.canFire)
         {
             lr.SetPosition(1, new Vector3(range.transform.position.x, range.transform.position.y, range.transform.position.z));
         }

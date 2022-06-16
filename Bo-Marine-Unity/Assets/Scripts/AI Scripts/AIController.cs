@@ -6,6 +6,7 @@ public class AIController : MonoBehaviour
 {
     public Transform target;
     [SerializeField] float chaseRange = 5f;
+    [SerializeField] float attackRange = 5f;
     [SerializeField] float turnSpeed = 5f;
 
     NavMeshAgent agent;
@@ -28,6 +29,10 @@ public class AIController : MonoBehaviour
             EngageTarget();
         }
         else if(distanceToTarget <= chaseRange)
+        {
+            isProvroked = true;
+        }
+        else if (distanceToTarget <= attackRange)
         {
             isProvroked = true;
         }
@@ -56,7 +61,7 @@ public class AIController : MonoBehaviour
     void AttackTarget()
     {
         GetComponent<Animator>().SetBool("Attack", true);
-        Debug.Log(name + "has seeked and is destroying" + target.name);
+        Debug.Log(name + " has seeked and is destroying " + target.name);
     }
     void FaceTarget()
     {
