@@ -53,4 +53,8 @@ public class CameraMovement : MonoBehaviour
         quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 0);
         transform.rotation = quaternion;
     }
+
+
+    // Volledig rond het character draaien.
+    // Een limiet voor het verticaal kijken.
 }
