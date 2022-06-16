@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform range;
 
     [SerializeField] float walkSpeed = 10f;
-    [SerializeField] float rotateSpeed = 10f;
+    [SerializeField] float rotateSpeed = 100f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float jumpHeight = 0.1f;
     bool canJump;
@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
         transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
+        transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
     }
 
     void GroundedCheck()
