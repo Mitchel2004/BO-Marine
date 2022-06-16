@@ -61,6 +61,13 @@ public class AIController : MonoBehaviour
     void AttackTarget()
     {
         GetComponent<Animator>().SetBool("Attack", true);
+
+        /*target targetPlayer = Player.transform.GetComponent<HealthPlayer>();
+        if (gameObject.tag == "Player")
+        {
+            targetPlayer.takeDamage(playerDamage);
+        }*/
+
         Debug.Log(name + " has seeked and is destroying " + target.name);
     }
     void FaceTarget()

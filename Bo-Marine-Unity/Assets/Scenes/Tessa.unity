@@ -633,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 386270341}
   chaseRange: 10
+  attackRange: 5
   turnSpeed: 5
   playerDamage: 100
 --- !u!195 &499478423
@@ -1014,6 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 386270341}
   chaseRange: 10
+  attackRange: 5
   turnSpeed: 5
   playerDamage: 100
 --- !u!195 &1762826365
@@ -1216,6 +1218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Final Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
 --- !u!1 &2032668377
@@ -1393,6 +1399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 386270341}
   chaseRange: 10
+  attackRange: 5
   turnSpeed: 5
   playerDamage: 100
 --- !u!114 &2108626995
