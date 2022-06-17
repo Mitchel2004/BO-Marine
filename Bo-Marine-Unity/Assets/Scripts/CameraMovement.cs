@@ -23,6 +23,10 @@ public class CameraMovement : MonoBehaviour
         //float x = Input.GetAxis("Mouse X") * (cameraSpeed * Time.deltaTime);
         float y = Input.GetAxis("Mouse Y") * (cameraSpeed * Time.deltaTime);
 
+        float y = Input.GetAxis("Mouse Y") * (cameraSpeed * Time.deltaTime);
+
+        transform.RotateAround(player.transform.position, Vector3.up, x);
+
         /*if (transform.rotation.eulerAngles.y <= 45 || transform.rotation.eulerAngles.y >= 315)
         {
             transform.RotateAround(player.transform.position, Vector3.up, x);
@@ -47,14 +51,14 @@ public class CameraMovement : MonoBehaviour
         else if (transform.rotation.eulerAngles.x > 180)
         {
             transform.RotateAround(cameraPoint.transform.position, Vector3.left, -1);
+
         }
 
         Quaternion quaternion = transform.rotation;
         quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 0);
         transform.rotation = quaternion;
     }
-
-
     // Volledig rond het character draaien.
     // Een limiet voor het verticaal kijken.
+
 }

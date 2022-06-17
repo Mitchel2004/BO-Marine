@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float walkSpeed = 10f;
     [SerializeField] float rotateSpeed = 100f;
+
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float jumpHeight = 0.1f;
     bool canJump;
