@@ -26,7 +26,6 @@ public class AIController : MonoBehaviour
     float distanceToTarget = Mathf.Infinity;
     bool isProvroked = false;
 
-
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -61,14 +60,21 @@ public class AIController : MonoBehaviour
     void ChaseTarget()
     {
         GetComponent<Animator>().SetBool("Attack", false);
-        GetComponent<Animator>().SetTrigger("Walking");
+        GetComponent<Animator>().SetBool("Walking", true);
         agent.SetDestination(target.position);
     }
 
     void AttackTarget()
     {
-        GetComponent<Animator>().SetBool("Attack", true);
-     
+        if (target != null)
+        {
+            agent.SetDestination(target.position);
+            if(agent.remainingDistance < 1.5f)
+            {
+                GetComponent<Animator>().SetBool("Walking", false);
+                GetComponent<Animator>().SetBool("Attack", true);
+            }
+        }
         Debug.Log(name + " has seeked and is destroying " + target.name);
     }
     void FaceTarget()
@@ -92,7 +98,6 @@ public class AIController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    
     private void OnTriggerEnter(Collider other)
     {
         
