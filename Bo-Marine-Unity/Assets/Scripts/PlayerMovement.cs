@@ -26,19 +26,24 @@ public class PlayerMovement : MonoBehaviour
     {
         Walk();
         GroundedCheck();
-        Jump();
+        JumpAnimation();
+        Punch();
         Pointer();
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            animator.CrossFade("Jump", 0f);
-        }
     }
 
     void Walk()
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        
+        if ((z > 0.1 || z < -0.1) && canJump)
+        {
+            animator.CrossFade("Run", 0f);
+        }
+        else if ((z > 0 || z < 0) && canJump)
+        {
+            animator.CrossFade("Run Stop", 0.1f);
+        }
 
         transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
         transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
@@ -62,14 +67,39 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump()
+    void JumpAnimation()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKey(KeyCode.Space) && canJump)
         {
-            rb.velocity = new Vector3(0, jumpForce, 0);
-            canJump = false;
+            StartCoroutine(Jump());
+            animator.CrossFade("Jump", 0f);
         }
     }
+
+    IEnumerator Jump()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        rb.velocity = new Vector3(0, jumpForce, 0);
+        canJump = false;
+    }
+
+    void Punch()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            animator.CrossFade("Punch", 0f);
+        }
+    }
+
+    // Voor in het schiet script
+    /*void Shoot()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            animator.CrossFade("Shoot", 0f);
+        }
+    }*/
 
     void Pointer()
     {
