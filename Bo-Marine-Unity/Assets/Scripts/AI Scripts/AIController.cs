@@ -4,21 +4,28 @@ using UnityEngine;
 using UnityEngine.AI;
 public class AIController : MonoBehaviour
 {
-    public Transform target;
+    [Header("Range")]
     [SerializeField] float chaseRange = 5f;
+
+    [Header("Transforms")]
+    public Transform target;
+
+    [Header("Speeds")]
     [SerializeField] float turnSpeed = 5f;
+
+    [Header("Health")]
+    //AI geeft damage aan de speler
+    public float playerDamage = 100f;
+    [SerializeField] float AIHealth = 100f;
+
+    //hit the player with AI
+    private bool ableToHit;
+    internal bool hit;
 
     NavMeshAgent agent;
     float distanceToTarget = Mathf.Infinity;
     bool isProvroked = false;
 
-    //AI geeft damage aan de speler
-    public float playerDamage = 100f;
-
-    //hit the player with AI
-    private bool ableToHit;
-    internal bool hit;
-    private object traget;
 
     private void Start()
     {
@@ -61,6 +68,7 @@ public class AIController : MonoBehaviour
     void AttackTarget()
     {
         GetComponent<Animator>().SetBool("Attack", true);
+     
         Debug.Log(name + " has seeked and is destroying " + target.name);
     }
     void FaceTarget()
@@ -69,6 +77,22 @@ public class AIController : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
+
+    public void TakeDamage(float damageAmount)
+    {
+        AIHealth -= damageAmount;
+        if (AIHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Destroy(this.gameObject);
+    }
+
+    
     private void OnTriggerEnter(Collider other)
     {
         

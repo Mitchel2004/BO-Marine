@@ -23,9 +23,7 @@ public class CameraMovement : MonoBehaviour
         //float x = Input.GetAxis("Mouse X") * (cameraSpeed * Time.deltaTime);
         float y = Input.GetAxis("Mouse Y") * (cameraSpeed * Time.deltaTime);
 
-        float y = Input.GetAxis("Mouse Y") * (cameraSpeed * Time.deltaTime);
-
-        transform.RotateAround(player.transform.position, Vector3.up, x);
+        //transform.RotateAround(player.transform.position, Vector3.up, x);
 
         /*if (transform.rotation.eulerAngles.y <= 45 || transform.rotation.eulerAngles.y >= 315)
         {
@@ -59,6 +57,6 @@ public class CameraMovement : MonoBehaviour
         transform.rotation = quaternion;
     }
     // Volledig rond het character draaien.
-    // Een limiet voor het verticaal kijken.
+    // Een limit voor het verticaal kijken.
 
 }
