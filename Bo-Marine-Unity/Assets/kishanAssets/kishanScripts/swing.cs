@@ -7,7 +7,7 @@ public class swing : MonoBehaviour
     Collision collision;
     [SerializeField] ParticleSystem particlesystem;
     internal bool hit;
-    //[SerializeField] Animator animator;
+    [SerializeField] Animator animator;
     private bool ableToHit;
     internal float damage = 10f;
     [SerializeField] AudioSource audioSource;
@@ -25,7 +25,7 @@ public class swing : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            //animator.SetBool("hit", true);
+            animator.CrossFade("Punch", 0f);
         }
     }
 

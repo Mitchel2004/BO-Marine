@@ -5,7 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+<<<<<<< HEAD
   - EnemyRightFist
+=======
+  - vuist
+  - blue
+  - red
+  - green
+  - yellow
+  - purple
+>>>>>>> origin/kishan
   layers:
   - Default
   - TransparentFX
