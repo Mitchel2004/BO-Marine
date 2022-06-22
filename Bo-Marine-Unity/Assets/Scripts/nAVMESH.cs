@@ -17,6 +17,7 @@ public class nAVMESH : MonoBehaviour
     [SerializeField] float timeBetweenAttacks;
     //[SerializeField] GameObject projectile;
     bool alreadyAttacked;
+    public float amount = 5;
 
     [Header("States")]
     [SerializeField] float sightRange, attackRange;
@@ -73,6 +74,12 @@ public class nAVMESH : MonoBehaviour
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         transform.LookAt(player);
+
+        target target = player.transform.GetComponent<target>();
+        if (player.gameObject.tag == "player")
+        {
+            target.takeDamage(amount);
+        }
 
         /*if (!alreadyAttacked)
         {

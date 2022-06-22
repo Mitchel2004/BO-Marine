@@ -15,7 +15,7 @@ public class swing : MonoBehaviour
     void Start()
     {
         ableToHit = true;
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         hit = false;
         particlesystem.Stop();
         audioSource = GetComponent<AudioSource>();
