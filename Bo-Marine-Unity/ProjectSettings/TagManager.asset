@@ -5,12 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
-  - vuist
-  - blue
-  - red
-  - green
-  - yellow
-  - purple
+  - EnemyRightFist
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
+  - 'Ground '
   - Player
   - 
   - 
