@@ -7,7 +7,7 @@ public class schieten : MonoBehaviour
     internal float range = 100f;
     internal float impactForce = 60f;
     private int bullets = 3;
-    public bool canFire = false;
+    public static bool canFire = false;
     private float timer = 2f;
 
     [SerializeField] Camera fpsCam;
@@ -17,14 +17,12 @@ public class schieten : MonoBehaviour
 
     void Update()
     {
-
-
         if (canFire == true && bullets > 0 && Input.GetButtonDown("Fire2"))
         {
             shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             canFire = true;
         }

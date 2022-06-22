@@ -5,43 +5,54 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
+    LineRenderer lr;
 
-    [SerializeField] float cameraSpeed = 5;
-    [SerializeField] float walkSpeed = 10;
-    [SerializeField] float jumpForce = 10;
-    [SerializeField] float jumpHeight = 0.5f;
+    public Transform range;
+    public Animator animator;
+
+    [SerializeField] float walkSpeed = 10f;
+    [SerializeField] float rotateSpeed = 100f;
+    [SerializeField] float jumpForce = 5f;
+    [SerializeField] float jumpHeight = 0.1f;
     bool canJump;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        lr = GetComponent<LineRenderer>();
     }
 
     void FixedUpdate()
     {
-        Spectate();
         Walk();
         GroundedCheck();
-        Jump();
+        JumpAnimation();
+        Punch();
+        Pointer();
     }
 
     void Walk()
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        
+        if ((z > 0.1 || z < -0.1) && canJump)
+        {
+            animator.CrossFade("Run", 0f);
+        }
+        else if ((z > 0 || z < 0) && canJump)
+        {
+            animator.CrossFade("Run Stop", 0.1f);
+        }
 
-        transform.Translate(new Vector3(x, 0, z) * (walkSpeed * Time.deltaTime));
+        transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
+        transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
     }
 
     void GroundedCheck()
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, Vector3.down);
-
-        //Debug.DrawRay(transform.position, Vector3.down * jumpHeight, Color.green);
 
         if (Physics.Raycast(ray, out hit, jumpHeight))
         {
@@ -56,19 +67,51 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump()
+    void JumpAnimation()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKey(KeyCode.Space) && canJump)
         {
-            rb.velocity = new Vector3(0, jumpForce, 0);
-            canJump = false;
+            StartCoroutine(Jump());
+            animator.CrossFade("Jump", 0f);
         }
     }
 
-    void Spectate()
+    IEnumerator Jump()
     {
-        float mouseX = Input.GetAxis("Mouse X");
+        yield return new WaitForSeconds(0.25f);
 
-        transform.Rotate(0, mouseX * cameraSpeed, 0);
+        rb.velocity = new Vector3(0, jumpForce, 0);
+        canJump = false;
+    }
+
+    void Punch()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            animator.CrossFade("Punch", 0f);
+        }
+    }
+
+    // Voor in het schiet script
+    /*void Shoot()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            animator.CrossFade("Shoot", 0f);
+        }
+    }*/
+
+    void Pointer()
+    {
+        lr.SetPosition(0, new Vector3(transform.position.x, range.transform.position.y, transform.position.z));
+
+        if (schieten.canFire)
+        {
+            lr.SetPosition(1, new Vector3(range.transform.position.x, range.transform.position.y, range.transform.position.z));
+        }
+        else
+        {
+            lr.SetPosition(1, new Vector3(transform.position.x, range.transform.position.y, transform.position.z));
+        }
     }
 }
