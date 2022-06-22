@@ -9064,6 +9064,46 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &315369820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315369816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df04ae5148dffe4d834d137f2f56b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 315369819}
+  player: {fileID: 1458748458}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  timeBetweenAttacks: 0
+  amount: 5
+  sightRange: 0
+  attackRange: 0
+  health: 0
+--- !u!114 &315369821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315369816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164def6dae218534db45b89b406ba4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5000
 --- !u!54 &315369825
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25789,7 +25829,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752993559}
-  m_LocalRotation: {x: 0.017457794, y: 0.02300914, z: -0.00040185647, w: 0.99958277}
+  m_LocalRotation: {x: 0.017457794, y: 0.023009136, z: -0.00040185652, w: 0.99958277}
   m_LocalPosition: {x: -0.32209173, y: 2.500001, z: -6.9925857}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -37002,7 +37042,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143997107}
-  m_LocalRotation: {x: -0.0006791428, y: 0.0000000172195, z: 1.1694504e-11, w: 0.99999976}
+  m_LocalRotation: {x: -0.0006791428, y: -0.0000000172195, z: -1.1694504e-11, w: 0.99999976}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -38061,7 +38101,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178234238}
-  m_LocalRotation: {x: 0.035646237, y: -0.000000017062154, z: 6.085883e-10, w: 0.9993645}
+  m_LocalRotation: {x: 0.035646256, y: 0.000000017463591, z: -6.229075e-10, w: 0.9993645}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -46247,6 +46287,7 @@ MonoBehaviour:
   fpsCam: {fileID: 103687723}
   flash: {fileID: 374069832}
   blood: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!120 &1458748455
 LineRenderer:
   m_ObjectHideFlags: 0
