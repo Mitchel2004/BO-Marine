@@ -13,6 +13,7 @@ public class schieten : MonoBehaviour
     [SerializeField] Camera fpsCam;
     [SerializeField] ParticleSystem flash;
     [SerializeField] ParticleSystem blood;
+    [SerializeField] Animator animator;
 
 
     void Update()
@@ -36,7 +37,7 @@ public class schieten : MonoBehaviour
 
     private void shoot()
     {
-
+        animator.CrossFade("Shoot", 0f);
         flash.Play();
 
         RaycastHit hit;

@@ -10103,6 +10103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlesystem: {fileID: 521493179}
+  animator: {fileID: 798271094}
   audioSource: {fileID: 798271087}
 --- !u!65 &798271089
 BoxCollider:
@@ -10129,15 +10130,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd25157e7769334087bb45cde08257b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canFire: 0
   fpsCam: {fileID: 1829862170}
   flash: {fileID: 478552706}
   blood: {fileID: 521493179}
+  animator: {fileID: 798271092}
 --- !u!4 &798271091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 698eae1064453e54c9a157d78b80ea98, type: 3}
   m_PrefabInstance: {fileID: 798271083}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &798271092
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798271084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b92e9db327fa7340b7ec6b815c37522, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &798271094
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798271085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b92e9db327fa7340b7ec6b815c37522, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1176928794
 GameObject:
   m_ObjectHideFlags: 0

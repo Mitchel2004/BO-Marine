@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
         Walk();
         GroundedCheck();
         JumpAnimation();
-        Punch();
         Pointer();
     }
 
@@ -83,23 +82,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(0, jumpForce, 0);
         canJump = false;
     }
-
-    void Punch()
-    {
-        if (Input.GetButton("Fire1"))
-        {
-            animator.CrossFade("Punch", 0f);
-        }
-    }
-
-    // Voor in het schiet script
-    /*void Shoot()
-    {
-        if (Input.GetButton("Fire1"))
-        {
-            animator.CrossFade("Shoot", 0f);
-        }
-    }*/
 
     void Pointer()
     {
