@@ -69,13 +69,14 @@ public class AIController : MonoBehaviour
         if (target != null)
         {
             agent.SetDestination(target.position);
-            if(agent.remainingDistance < 1.5f)
+            Debug.Log(agent.remainingDistance);
+            if(agent.remainingDistance < 6.1f)
             {
                 GetComponent<Animator>().SetBool("Walking", false);
-                GetComponent<Animator>().SetBool("Attack", true);
+                GetComponent<Animator>().SetTrigger("Attack");
             }
         }
-        Debug.Log(name + " has seeked and is destroying " + target.name);
+        //Debug.Log(name + " has seeked and is destroying " + target.name);
     }
     void FaceTarget()
     {
@@ -98,7 +99,7 @@ public class AIController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         
         target target = other.transform.GetComponent<target>();
@@ -112,7 +113,7 @@ public class AIController : MonoBehaviour
             }
             target.takeDamage(playerDamage);
         }
-    }
+    }*/
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

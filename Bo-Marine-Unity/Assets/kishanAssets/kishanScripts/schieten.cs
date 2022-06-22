@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class schieten : MonoBehaviour
 {
-    internal float damage = 10f;
-    internal float range = 100f;
-    internal float impactForce = 60f;
+    public static float ShootDamage = 2f;
+    private float range = 100f;
     private int bullets = 3;
     public static bool canFire = false;
     private float timer = 2f;
@@ -13,7 +12,7 @@ public class schieten : MonoBehaviour
     [SerializeField] Camera fpsCam;
     [SerializeField] ParticleSystem flash;
     [SerializeField] ParticleSystem blood;
-    [SerializeField] Animator animator;
+    public Animator animator;
 
 
     void Update()
@@ -21,6 +20,7 @@ public class schieten : MonoBehaviour
         if (canFire == true && bullets > 0 && Input.GetButtonDown("Fire2"))
         {
             shoot();
+            animator.SetTrigger("Shoot");
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -37,23 +37,29 @@ public class schieten : MonoBehaviour
 
     private void shoot()
     {
-        animator.CrossFade("Shoot", 0f);
-        flash.Play();
+        timer -= Time.deltaTime;
 
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (timer <= 0)
         {
-            Debug.Log(hit.transform.name);
+            flash.Play();
 
-            target target = hit.transform.GetComponent<target>();
-            if (target != null)
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
-                target.takeDamage(damage);
-            }
+                Debug.Log(hit.transform.name);
 
-            Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
+                target target = hit.transform.GetComponent<target>();
+                if (target != null)
+                {
+                    target.health -= ShootDamage;
+                }
+
+                Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+            bullets--;
+            timer = 3.5f;
         }
-        bullets--;
+        
     }
 
     private void reload()
