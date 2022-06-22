@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class swing : MonoBehaviour
 {
+    public target damagescript;
     Collision collision;
     [SerializeField] ParticleSystem particlesystem;
     internal bool hit;
     [SerializeField] Animator animator;
     private bool ableToHit;
-    internal float damage = 10f;
+    public float PunchDamage = 1f;
     [SerializeField] AudioSource audioSource;
 
     void Start()
@@ -41,7 +42,8 @@ public class swing : MonoBehaviour
             {
                 ableToHit = false;
             }
-            target.takeDamage(damage);
+            target.health -= PunchDamage;
+            // target.takeDamage(PunchDamage);
         }
     }
 }

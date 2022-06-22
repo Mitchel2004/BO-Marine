@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class schieten : MonoBehaviour
 {
-    internal float damage = 10f;
-    internal float range = 100f;
-    internal float impactForce = 60f;
+    public static float ShootDamage = 2f;
+    private float range = 100f;
     private int bullets = 3;
     public static bool canFire = false;
     private float timer = 2f;
@@ -37,7 +36,7 @@ public class schieten : MonoBehaviour
 
     private void shoot()
     {
-        animator.CrossFade("Shoot", 0f);
+        animator.SetBool("Shoot", true);
         flash.Play();
 
         RaycastHit hit;
@@ -48,7 +47,7 @@ public class schieten : MonoBehaviour
             target target = hit.transform.GetComponent<target>();
             if (target != null)
             {
-                target.takeDamage(damage);
+                target.health -= ShootDamage;
             }
 
             Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));

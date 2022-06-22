@@ -6,14 +6,13 @@ using UnityEngine;
 public class target : MonoBehaviour
 {
     public float health = 5000f;
+    [SerializeField] Animator animator;
 
-    public void takeDamage(float amount)
+    private void Update()
     {
-        health -= amount;
         if (health <= 0f)
         {
-            Destroy(gameObject);
+            animator.SetBool("Death", true);
         }
     }
-
 }

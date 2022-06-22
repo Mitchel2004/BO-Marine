@@ -98,7 +98,7 @@ public class AIController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         
         target target = other.transform.GetComponent<target>();
@@ -112,7 +112,7 @@ public class AIController : MonoBehaviour
             }
             target.takeDamage(playerDamage);
         }
-    }
+    }*/
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

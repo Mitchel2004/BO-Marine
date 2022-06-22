@@ -78,7 +78,7 @@ public class nAVMESH : MonoBehaviour
         target target = player.transform.GetComponent<target>();
         if (player.gameObject.tag == "player")
         {
-            target.takeDamage(amount);
+            //target.takeDamage(amount);
         }
 
         /*if (!alreadyAttacked)
