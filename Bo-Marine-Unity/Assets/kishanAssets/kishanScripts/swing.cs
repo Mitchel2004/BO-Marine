@@ -26,7 +26,7 @@ public class swing : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            animator.CrossFade("Punch", 0f);
+            animator.SetTrigger("Punch");
         }
     }
 

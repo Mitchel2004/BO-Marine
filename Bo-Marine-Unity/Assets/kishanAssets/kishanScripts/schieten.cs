@@ -12,7 +12,7 @@ public class schieten : MonoBehaviour
     [SerializeField] Camera fpsCam;
     [SerializeField] ParticleSystem flash;
     [SerializeField] ParticleSystem blood;
-    [SerializeField] Animator animator;
+    public Animator animator;
 
 
     void Update()
@@ -20,6 +20,7 @@ public class schieten : MonoBehaviour
         if (canFire == true && bullets > 0 && Input.GetButtonDown("Fire2"))
         {
             shoot();
+            animator.SetTrigger("Shoot");
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -36,23 +37,29 @@ public class schieten : MonoBehaviour
 
     private void shoot()
     {
-        animator.SetBool("Shoot", true);
-        flash.Play();
+        timer -= Time.deltaTime;
 
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (timer <= 0)
         {
-            Debug.Log(hit.transform.name);
+            flash.Play();
 
-            target target = hit.transform.GetComponent<target>();
-            if (target != null)
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
-                target.health -= ShootDamage;
-            }
+                Debug.Log(hit.transform.name);
 
-            Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
+                target target = hit.transform.GetComponent<target>();
+                if (target != null)
+                {
+                    target.health -= ShootDamage;
+                }
+
+                Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+            bullets--;
+            timer = 3.5f;
         }
-        bullets--;
+        
     }
 
     private void reload()
