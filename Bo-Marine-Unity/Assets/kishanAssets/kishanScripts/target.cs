@@ -12,7 +12,7 @@ public class target : MonoBehaviour
     {
         if (health <= 0f)
         {
-            animator.SetBool("Death", true);
+            animator.SetTrigger("Death");
         }
     }
 }
