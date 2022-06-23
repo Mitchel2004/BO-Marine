@@ -1,0 +1,12 @@
+diff a/Bo-Marine-Unity/Assets/Low Poly Water/Plane Meshes/ocean10x10W100H100.asset b/Bo-Marine-Unity/Assets/Low Poly Water/Plane Meshes/ocean10x10W100H100.asset	(rejected hunks)
+@@ -151,8 +151,8 @@
+       m_BitSize: 0
+     m_UVInfo: 0
+   m_LocalAABB:
+-    m_Center: {x: 0, y: -0.0035347492, z: 0}
+-    m_Extent: {x: 50, y: 0.49333555, z: 50}
++    m_Center: {x: 0, y: 0.00000029802322, z: 0}
++    m_Extent: {x: 50, y: 0.49997827, z: 50}
+   m_MeshUsageFlags: 0
+   m_BakedConvexCollisionMesh: 
+   m_BakedTriangleCollisionMesh: 

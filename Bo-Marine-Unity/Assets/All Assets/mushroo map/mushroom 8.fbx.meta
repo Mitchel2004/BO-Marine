@@ -1,29 +1,8 @@
 fileFormatVersion: 2
-guid: 1170e0274cb0dc8458a6b00230543013
+guid: 1a66f920216f5d445b863202a1aa51a3
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
-  - first:
-      74: 5721304741018412699
-    second: metarig|ALLE_ANIMATIES
-  - first:
-      74: -4260635924290690674
-    second: metarig|ARM_LINKSAction.001
-  - first:
-      74: 7455962507935060677
-    second: metarig|Death_ANIMATION
-  - first:
-      74: -8612571284678622297
-    second: metarig|Idle animation
-  - first:
-      74: 8930794693181541664
-    second: metarig|Slaan
-  - first:
-      74: 4549520546449202378
-    second: metarig|T_Pose.001
-  - first:
-      74: 4273044347707482782
-    second: metarig|walk animation
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2

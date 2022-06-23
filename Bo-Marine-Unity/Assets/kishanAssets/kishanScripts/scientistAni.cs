@@ -20,6 +20,7 @@ public class scientistAni : MonoBehaviour
         if (Vector3.Distance (player.transform.position, transform.position) <= Range && Input.GetKeyDown(KeyCode.Q))
         {
             animator.SetBool("giveSample_Jump", true);
+            animator.SetBool("giveSample_Jump", false);
         }
     }
 
