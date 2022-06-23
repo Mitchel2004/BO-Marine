@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float walkSpeed = 10f;
     [SerializeField] float rotateSpeed = 100f;
+
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float jumpHeight = 0.1f;
     bool canJump;
@@ -27,28 +28,23 @@ public class PlayerMovement : MonoBehaviour
         Walk();
         GroundedCheck();
         JumpAnimation();
-        Punch();
         Pointer();
     }
 
+    //Makes player walk with the axises 
     void Walk()
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        
-        if ((z > 0.1 || z < -0.1) && canJump)
-        {
-            animator.CrossFade("Run", 0f);
-        }
-        else if ((z > 0 || z < 0) && canJump)
-        {
-            animator.CrossFade("Run Stop", 0.1f);
-        }
 
+        animator.SetFloat("Speed", z);
+        
         transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
         transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
+
     }
 
+    //Checks if the player is grounded
     void GroundedCheck()
     {
         RaycastHit hit;
@@ -67,15 +63,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Animation for Jumping
     void JumpAnimation()
     {
         if (Input.GetKey(KeyCode.Space) && canJump)
         {
-            StartCoroutine(Jump());
-            animator.CrossFade("Jump", 0f);
+            StartCoroutine(Jump()); // Delay for jumping
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
         }
     }
 
+    //Calculate the delay
     IEnumerator Jump()
     {
         yield return new WaitForSeconds(0.25f);
@@ -84,23 +86,7 @@ public class PlayerMovement : MonoBehaviour
         canJump = false;
     }
 
-    void Punch()
-    {
-        if (Input.GetButton("Fire1"))
-        {
-            animator.CrossFade("Punch", 0f);
-        }
-    }
-
-    // Voor in het schiet script
-    /*void Shoot()
-    {
-        if (Input.GetButton("Fire1"))
-        {
-            animator.CrossFade("Shoot", 0f);
-        }
-    }*/
-
+    //Aim with a linerenderer
     void Pointer()
     {
         lr.SetPosition(0, new Vector3(transform.position.x, range.transform.position.y, transform.position.z));
