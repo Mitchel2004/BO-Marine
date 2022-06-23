@@ -14,12 +14,9 @@ public class AIController : MonoBehaviour
     [SerializeField] float turnSpeed = 5f;
 
     [Header("Health")]
-    //AI geeft damage aan de speler
-    public float playerDamage = 100f;
     [SerializeField] float AIHealth = 100f;
 
     //hit the player with AI
-    private bool ableToHit;
     internal bool hit;
 
     NavMeshAgent agent;
@@ -29,6 +26,11 @@ public class AIController : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        if(agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+            Debug.Log("agent is null");
+        }
     }
 
     private void Update()
@@ -76,7 +78,6 @@ public class AIController : MonoBehaviour
                 GetComponent<Animator>().SetTrigger("Attack");
             }
         }
-        //Debug.Log(name + " has seeked and is destroying " + target.name);
     }
     void FaceTarget()
     {
@@ -99,21 +100,6 @@ public class AIController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    /*private void OnTriggerEnter(Collider other)
-    {
-        
-        target target = other.transform.GetComponent<target>();
-        if (other.gameObject.tag == "enemy")
-        {
-            hit = true;
-           
-            if (ableToHit == true)
-            {
-                ableToHit = false;
-            }
-            target.takeDamage(playerDamage);
-        }
-    }*/
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

@@ -6369,7 +6369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 820267269}
-  player: {fileID: 0}
+  player: {fileID: 1764226940}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -6420,7 +6420,6 @@ MonoBehaviour:
   chaseRange: 25
   target: {fileID: 1764226940}
   turnSpeed: 10
-  playerDamage: 5
   AIHealth: 100
 --- !u!95 &820267271
 Animator:
@@ -6469,7 +6468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164def6dae218534db45b89b406ba4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5000
+  health: 50
   animator: {fileID: 820267271}
 --- !u!1001 &826594559
 PrefabInstance:
@@ -6931,24 +6930,39 @@ Transform:
   m_Father: {fileID: 1764226940}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1120432157 stripped
+--- !u!1 &1105095518 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5503253074772556580, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
+  m_CorrespondingSourceObject: {fileID: -5627777446194860452, guid: e6ea4710c1655ae4dad0e609ac7bfc11, type: 3}
   m_PrefabInstance: {fileID: 826594559}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &1120432159
-SphereCollider:
+--- !u!114 &1105095520
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120432157}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_GameObject: {fileID: 1105095518}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.007319416
-  m_Center: {x: -7.5235415e-11, y: 0.00024104092, z: 0.00061779993}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4705f1a30935172409c83826d10d8ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDamage: 10
+  hpscript: {fileID: 2125250229}
+--- !u!136 &1105095521
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105095518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0062783062
+  m_Height: 0.029289814
+  m_Direction: 1
+  m_Center: {x: -0.0000000019059843, y: -0.0064066034, z: 0.00011922225}
 --- !u!1 &1125468186
 GameObject:
   m_ObjectHideFlags: 0
@@ -8051,7 +8065,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0f95976a45aa47047812512674353abd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8595,7 +8609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fb08f3a99843c4b819c8a410b2a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagescript: {fileID: 820267273}
+  hpscript: {fileID: 0}
   particlesystem: {fileID: 521493179}
   animator: {fileID: 1489887606}
   PunchDamage: 1
@@ -9109,7 +9123,7 @@ GameObject:
   - component: {fileID: 1764226935}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10115,6 +10129,7 @@ GameObject:
   - component: {fileID: 2125250224}
   - component: {fileID: 2125250226}
   - component: {fileID: 2125250227}
+  - component: {fileID: 2125250229}
   - component: {fileID: 2125250228}
   m_Layer: 0
   m_Name: Alice Dee
@@ -10199,7 +10214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fb08f3a99843c4b819c8a410b2a157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagescript: {fileID: 820267273}
+  hpscript: {fileID: 0}
   particlesystem: {fileID: 521493179}
   animator: {fileID: 2125250223}
   PunchDamage: 1
@@ -10300,6 +10315,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2125250229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125250222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd2693a22a5c1645871d9a621982f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  animator: {fileID: 2125250223}
 --- !u!1 &2128598894
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class swing : MonoBehaviour
 {
-    public target damagescript;
-    Collision collision;
+    public target hpscript;
     [SerializeField] ParticleSystem particlesystem;
     internal bool hit;
     [SerializeField] Animator animator;
@@ -43,7 +42,6 @@ public class swing : MonoBehaviour
                 ableToHit = false;
             }
             target.health -= PunchDamage;
-            // target.takeDamage(PunchDamage);
         }
     }
 }
