@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public GameObject cameraPoint;
-    [SerializeField] float cameraSpeed = 100;
+    public Transform cameraPoint;
+    public float cameraSpeed = 100f;
 
     void Start()
     {
@@ -13,44 +13,20 @@ public class CameraMovement : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Camera();
     }
 
     void Camera()
     {
-        //float x = Input.GetAxis("Mouse X") * (cameraSpeed * Time.deltaTime);
-        float y = Input.GetAxis("Mouse Y") * (cameraSpeed * Time.deltaTime);
+        float interpolation = cameraSpeed * Time.deltaTime;
 
-        //transform.RotateAround(player.transform.position, Vector3.up, x);
+        Vector3 position = transform.position;
+        position.y = Mathf.Lerp(transform.position.y, cameraPoint.position.y, interpolation);
+        position.x = Mathf.Lerp(transform.position.x, cameraPoint.position.x, interpolation);
 
-        /*if (transform.rotation.eulerAngles.y <= 45 || transform.rotation.eulerAngles.y >= 315)
-        {
-            transform.RotateAround(player.transform.position, Vector3.up, x);
-        }
-        else if (transform.rotation.eulerAngles.y < 180)
-        {
-            transform.RotateAround(player.transform.position, Vector3.down, 1);
-        }
-        else if (transform.rotation.eulerAngles.y > 180)
-        {
-            transform.RotateAround(player.transform.position, Vector3.up, 1);
-        }*/
-        
-        if (transform.rotation.eulerAngles.x <= 45 || transform.rotation.eulerAngles.x >= 345)
-        {
-            transform.RotateAround(cameraPoint.transform.position, Vector3.left, y);
-        }
-        else if (transform.rotation.eulerAngles.x < 180)
-        {
-            transform.RotateAround(cameraPoint.transform.position, Vector3.left, 1);
-        }
-        else if (transform.rotation.eulerAngles.x > 180)
-        {
-            transform.RotateAround(cameraPoint.transform.position, Vector3.left, -1);
-
-        }
+        transform.position = position;
 
         Quaternion quaternion = transform.rotation;
         quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 0);
