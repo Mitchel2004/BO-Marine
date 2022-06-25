@@ -40,12 +40,4 @@ public class HealthPlayer : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    /*void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            TakeDamage(1f);
-        }
-    }*/
 }
