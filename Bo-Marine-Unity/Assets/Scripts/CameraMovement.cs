@@ -41,9 +41,9 @@ public class CameraMovement : MonoBehaviour
 
         var angle = followTransform.transform.localEulerAngles.x;
 
-        if (angle > 180 && angle < 330)
+        if (angle > 180 && angle < 340)
         {
-            angles.x = 330;
+            angles.x = 340;
         }
         else if (angle < 180 && angle > 40)
         {
