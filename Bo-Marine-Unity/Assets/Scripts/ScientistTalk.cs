@@ -9,6 +9,8 @@ public class ScientistTalk : MonoBehaviour
     public GameObject scientistUI;
     public Camera mainCamera;
     public PlayerMovement movement;
+    public Animator playerAnimator;
+    public HealthBoss boss;
 
     bool canTalk = true;
     float talkRange = 15f;
@@ -27,6 +29,7 @@ public class ScientistTalk : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                playerAnimator.SetFloat("Speed", 0f);
                 StartCoroutine(Talk());
             }
         }
@@ -41,14 +44,40 @@ public class ScientistTalk : MonoBehaviour
         canTalk = false;
         movement.enabled = false;
 
-        audioSource.clip = talkAudio[clipIndex];
-        audioSource.Play();
+        if (clipIndex <= 1 && boss.bossHealth > 0f)
+        {
+            audioSource.clip = talkAudio[0];
+            audioSource.Play();
 
-        yield return new WaitForSeconds(audioSource.clip.length);
+            yield return new WaitForSeconds(audioSource.clip.length);
 
-        clipIndex += 1;
+            canTalk = true;
+            movement.enabled = true;
 
-        canTalk = true;
-        movement.enabled = true;
+            audioSource.clip = talkAudio[1];
+            audioSource.Play();
+
+            clipIndex = 2;
+        }
+        else if (boss.bossHealth > 0f)
+        {
+            audioSource.clip = talkAudio[2];
+            audioSource.Play();
+
+            yield return new WaitForSeconds(audioSource.clip.length);
+
+            canTalk = true;
+            movement.enabled = true;
+        }
+        else
+        {
+            audioSource.clip = talkAudio[8];
+            audioSource.Play();
+
+            yield return new WaitForSeconds(audioSource.clip.length);
+
+            canTalk = true;
+            movement.enabled = true;
+        }
     }
 }
