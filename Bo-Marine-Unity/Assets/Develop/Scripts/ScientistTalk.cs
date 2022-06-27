@@ -10,12 +10,18 @@ public class ScientistTalk : MonoBehaviour
     public Camera mainCamera;
     public PlayerMovement movement;
     public Animator playerAnimator;
+    public Animator scientistAnimator;
     public HealthBoss boss;
 
     bool canTalk = true;
     float talkRange = 15f;
     float playerDistance;
     int clipIndex = 0;
+
+    void Start()
+    {
+        InvokeRepeating("Scratch", 10f, 20f);
+    }
 
     void Update()
     {
@@ -48,11 +54,16 @@ public class ScientistTalk : MonoBehaviour
         {
             audioSource.clip = talkAudio[0];
             audioSource.Play();
+            scientistAnimator.SetTrigger("Jump");
 
-            yield return new WaitForSeconds(audioSource.clip.length);
+            yield return new WaitForSeconds(44f);
 
-            canTalk = true;
+            scientistAnimator.SetTrigger("Thinking");
+
+            yield return new WaitForSeconds(audioSource.clip.length - 44f);
+
             movement.enabled = true;
+            canTalk = true;
 
             audioSource.clip = talkAudio[1];
             audioSource.Play();
@@ -64,7 +75,11 @@ public class ScientistTalk : MonoBehaviour
             audioSource.clip = talkAudio[2];
             audioSource.Play();
 
-            yield return new WaitForSeconds(audioSource.clip.length);
+            yield return new WaitForSeconds(2f);
+
+            scientistAnimator.SetTrigger("Head");
+
+            yield return new WaitForSeconds(audioSource.clip.length - 2f);
 
             canTalk = true;
             movement.enabled = true;
@@ -79,5 +94,10 @@ public class ScientistTalk : MonoBehaviour
             canTalk = true;
             movement.enabled = true;
         }
+    }
+
+    void Scratch()
+    {
+        scientistAnimator.SetTrigger("Ass");
     }
 }
