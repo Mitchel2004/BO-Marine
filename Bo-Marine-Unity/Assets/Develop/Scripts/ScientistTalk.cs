@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScientistTalk : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip[] talkAudio = new AudioClip[9];
+    public AudioClip[] talkAudio = new AudioClip[4];
     public GameObject scientistUI;
     public Camera mainCamera;
     public PlayerMovement movement;
@@ -71,7 +71,7 @@ public class ScientistTalk : MonoBehaviour
         }
         else
         {
-            audioSource.clip = talkAudio[8];
+            audioSource.clip = talkAudio[3];
             audioSource.Play();
 
             yield return new WaitForSeconds(audioSource.clip.length);
