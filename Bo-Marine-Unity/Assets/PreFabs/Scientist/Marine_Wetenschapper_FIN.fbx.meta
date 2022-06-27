@@ -42,6 +42,18 @@ ModelImporter:
   - first:
       74: -3307670575728721610
     second: worried
+  - first:
+      74: -5185308456035383391
+    second: Thinking
+  - first:
+      74: 4696558433512245321
+    second: Ass Scratch
+  - first:
+      74: -2393317944291795250
+    second: Worried
+  - first:
+      74: -3100369314251171874
+    second: Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -103,8 +115,8 @@ ModelImporter:
       name: Thinking
       takeName: metarig|ALL
       internalID: 0
-      firstFrame: 20
-      lastFrame: 120
+      firstFrame: 6
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -132,8 +144,8 @@ ModelImporter:
       name: Ass Scratch
       takeName: metarig|ALL
       internalID: 0
-      firstFrame: 140
-      lastFrame: 250
+      firstFrame: 128
+      lastFrame: 215
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -161,8 +173,8 @@ ModelImporter:
       name: Jump
       takeName: metarig|ALL
       internalID: 0
-      firstFrame: 280
-      lastFrame: 352
+      firstFrame: 255
+      lastFrame: 338
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -190,8 +202,8 @@ ModelImporter:
       name: Head Scratch
       takeName: metarig|ALL
       internalID: 0
-      firstFrame: 375
-      lastFrame: 465
+      firstFrame: 355
+      lastFrame: 435
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -216,11 +228,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: worried
+      name: Worried
       takeName: metarig|ALL
       internalID: 0
-      firstFrame: 505
-      lastFrame: 587
+      firstFrame: 483
+      lastFrame: 526
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -228,6 +240,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: metarig|ALL
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
