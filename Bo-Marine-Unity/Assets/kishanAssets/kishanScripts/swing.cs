@@ -4,36 +4,45 @@ using UnityEngine;
 
 public class swing : MonoBehaviour
 {
-    public target damagescript;
-    Collision collision;
+    public target hpscript;
     [SerializeField] ParticleSystem particlesystem;
     internal bool hit;
-    [SerializeField] Animator animator;
+    public Animator animator;
     private bool ableToHit;
     public float PunchDamage = 1f;
     [SerializeField] AudioSource audioSource;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
-        ableToHit = true;
-        animator = GetComponent<Animator>();
+        ableToHit = true; 
         hit = false;
-        particlesystem.Stop();
-        audioSource = GetComponent<AudioSource>();
+        particlesystem.Stop();    
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            Debug.Log(animator);
             animator.SetTrigger("Punch");
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         audioSource.Play(0);
-        target target = other.transform.GetComponent<target>();
+        target target = other.gameObject.GetComponent<target>();
+        target.health -= PunchDamage;
+        if (target == null)
+        {
+            Debug.Log("target is null");
+        }
+
         if (other.gameObject.tag == "enemy")
         {
             hit = true;
@@ -43,7 +52,7 @@ public class swing : MonoBehaviour
                 ableToHit = false;
             }
             target.health -= PunchDamage;
-            // target.takeDamage(PunchDamage);
+            Debug.Log(target.health);
         }
     }
 }
