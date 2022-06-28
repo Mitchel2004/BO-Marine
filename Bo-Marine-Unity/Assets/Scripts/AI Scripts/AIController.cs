@@ -71,7 +71,6 @@ public class AIController : MonoBehaviour
         if (target != null)
         {
             agent.SetDestination(target.position);
-            Debug.Log(agent.remainingDistance);
             if(agent.remainingDistance < 6.1f)
             {
                 GetComponent<Animator>().SetBool("Walking", false);

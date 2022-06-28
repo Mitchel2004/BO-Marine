@@ -8,10 +8,11 @@ public class enemySwing : MonoBehaviour
     public PlayerHP hpscript;
     private void OnTriggerEnter(Collider other)
     {
-        PlayerHP player = other.transform.GetComponent<PlayerHP>();
-        if (other.gameObject.tag == "Player")
+        PlayerHP target = other.transform.GetComponent<PlayerHP>();
+        if (other.gameObject.tag == "player")
         {
-            player.health -= playerDamage;
+            target.health -= playerDamage;
+            Debug.Log(target.health);
         }
     }
 }
