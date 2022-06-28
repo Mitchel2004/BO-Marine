@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     [SerializeField] float walkSpeed = 10f;
+    [SerializeField] float walkBackwardsSpeed = 5f;
     [SerializeField] float rotateSpeed = 100f;
 
     [SerializeField] float jumpForce = 5f;
@@ -40,7 +41,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", z);
         
         transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
-        transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
+
+        if (z > 0)
+        {
+            transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
+        }
+        else
+        {
+            transform.Translate(new Vector3(0, 0, z) * (walkBackwardsSpeed * Time.deltaTime));
+        }
+        
 
     }
 
