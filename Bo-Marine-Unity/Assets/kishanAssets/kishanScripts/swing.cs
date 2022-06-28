@@ -29,7 +29,7 @@ public class swing : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log(animator);
-            animator.SetTrigger("Punching");
+            animator.SetTrigger("Punch");
         }
     }
 
