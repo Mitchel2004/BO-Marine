@@ -13,9 +13,6 @@ public class AIController : MonoBehaviour
     [Header("Speeds")]
     [SerializeField] float turnSpeed = 5f;
 
-    [Header("Health")]
-    [SerializeField] float AIHealth = 100f;
-
     //hit the player with AI
     internal bool hit;
 
@@ -80,19 +77,7 @@ public class AIController : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
-    public void TakeDamage(float damageAmount)
-    {
-        AIHealth -= damageAmount;
-        if (AIHealth <= 0)
-        {
-            GetComponent<Animator>().SetTrigger("Death");
-            Die();
-        }
-    }
-    void Die()
-    {
-        Destroy(this.gameObject);
-    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
