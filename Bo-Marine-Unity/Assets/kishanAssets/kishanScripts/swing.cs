@@ -33,7 +33,7 @@ public class swing : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter (Collision other)
     {
         audioSource.Play(0);
         target target = other.gameObject.GetComponent<target>();
