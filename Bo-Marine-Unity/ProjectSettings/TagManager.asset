@@ -3,29 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - enemy
-  - EnemyRightFist
-  - Ground
-  - Radio
-  - Wall
-<<<<<<< HEAD
-  - PowerUp
-=======
-  - purple
-  - red
-  - yellow
-  - blue
->>>>>>> origin/kishan
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - enemy
+  - 
   - Water
   - UI
-  - 'Ground '
-  - Player
+  - 
+  - 
   - 
   - 
   - 
