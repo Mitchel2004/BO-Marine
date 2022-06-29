@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class enemySwing : MonoBehaviour
 {
-    public float playerDamage = 10f;
-    public PlayerHP hpscript;
-    private void OnCollisionEnter(Collision other)
-    {
-        PlayerHP target = other.gameObject.GetComponent<PlayerHP>();
-        if (target == null)
-        {
-            Debug.Log("target is null");
-        }
+    public float playerDamage = 1f;
+    public HealthPlayer healthPlayer;
 
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.gameObject.tag == "Player")
         {
-            target.health -= playerDamage;
-            Debug.Log(target.health);
+            healthPlayer.TakeDamage(playerDamage);
+            Debug.Log("Player get's damage");
         }
     }
 }

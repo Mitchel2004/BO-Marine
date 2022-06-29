@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class swing : MonoBehaviour
 {
-    public target hpscript;
     [SerializeField] ParticleSystem particlesystem;
-    internal bool hit;
-    public Animator animator;
-    private bool ableToHit;
-    public float PunchDamage = 1f;
     [SerializeField] AudioSource audioSource;
+    public Animator animator;
+    public float PunchDamage = 1f;
 
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    public HealthBoss healthBoss;
 
     void Start()
     {
-        ableToHit = true; 
-        hit = false;
+        audioSource = GetComponent<AudioSource>();
         particlesystem.Stop();    
     }
 
@@ -33,27 +26,16 @@ public class swing : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter (Collision other)
+    private void OnTriggerEnter (Collider other)
     {
         audioSource.Play(0);
-        target target = other.gameObject.GetComponent<target>();
-        target.health -= PunchDamage;
-        Debug.Log("hij collide");
-        if (target == null)
-        {
-            Debug.Log("target is null");
-        }
+        Debug.Log("Collider works of the player");
 
         if (other.gameObject.tag == "enemy")
         {
-            hit = true;
             particlesystem.Play();
-            if (ableToHit == true)
-            {
-                ableToHit = false;
-            }
-            target.health -= PunchDamage;
-            Debug.Log(target.health);
+            healthBoss.TakeDamage(PunchDamage);
+            Debug.Log("Enemy get's damage :(");
         }
     }
 }

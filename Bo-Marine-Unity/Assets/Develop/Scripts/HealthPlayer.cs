@@ -7,28 +7,40 @@ using UnityEngine.SceneManagement;
 public class HealthPlayer : MonoBehaviour
 {
     public Animator playerAnimator;
-    public Animator healthAnimator;
+    public Animator playerhealthbarAnimator;
     public GameObject healthBar;
 
     public float playerHealth = 3f;
-    public Transform target;
 
+    public Animator enemyAnimator;
+    public enemySwing enemySwing;
+    public Collider enemyHandCollider;
+    public PlayerMovement playerMovement;
+    public CameraMovement cameraMovement;
     public void TakeDamage(float amount)
     {
         playerHealth -= amount;
-        
+
         if (playerHealth == 2f)
         {
-            healthAnimator.SetTrigger("HighToMedium");
+            playerhealthbarAnimator.SetTrigger("HighToMedium");
         }
         else if (playerHealth == 1f)
         {
-            healthAnimator.SetTrigger("MediumToLow");
+            playerhealthbarAnimator.SetTrigger("MediumToLow");
         }
         else
         {
             playerAnimator.SetTrigger("Dead");
-            healthAnimator.SetTrigger("Exit");
+            playerhealthbarAnimator.SetTrigger("Exit");
+
+            enemyHandCollider.enabled = false;
+            enemyAnimator.enabled = false;
+            enemySwing.enabled = false;
+            playerMovement.enabled = false;
+            cameraMovement.enabled = false;
+            
+
             healthBar.SetActive(false);
             StartCoroutine(Restart());
         }
@@ -37,7 +49,6 @@ public class HealthPlayer : MonoBehaviour
     IEnumerator Restart()
     {
         yield return new WaitForSeconds(10f);
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

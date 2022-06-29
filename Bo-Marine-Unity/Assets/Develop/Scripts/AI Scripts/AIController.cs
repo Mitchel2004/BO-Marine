@@ -13,6 +13,7 @@ public class AIController : MonoBehaviour
     [Header("Speeds")]
     [SerializeField] float turnSpeed = 5f;
 
+    public bool isAttacking = false;
     //hit the player with AI
     internal bool hit;
 
@@ -68,7 +69,9 @@ public class AIController : MonoBehaviour
             {
                 GetComponent<Animator>().SetBool("Walking", false);
                 GetComponent<Animator>().SetTrigger("Attack");
+                isAttacking = true;
             }
+           
         }
     }
     void FaceTarget()
