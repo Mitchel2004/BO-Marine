@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Radio
   - Wall
+  - PowerUp
   layers:
   - Default
   - TransparentFX
