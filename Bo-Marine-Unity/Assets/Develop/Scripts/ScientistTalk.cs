@@ -27,7 +27,9 @@ public class ScientistTalk : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetJoystickNames()[0] != "")
+        /*Debug.Log(Input.GetJoystickNames().Length);
+
+        if (Input.GetJoystickNames().Length > 0)
         {
             scientistUI.SetActive(false);
             scientistUI = scientistUI_PS;
@@ -36,7 +38,7 @@ public class ScientistTalk : MonoBehaviour
         {
             scientistUI.SetActive(false);
             scientistUI = scientistUI_PC;
-        }
+        }*/
 
         scientistUI.transform.rotation = mainCamera.transform.rotation;
 
