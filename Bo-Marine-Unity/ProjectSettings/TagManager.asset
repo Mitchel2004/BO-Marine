@@ -9,12 +9,19 @@ TagManager:
   - Ground
   - Radio
   - Wall
+<<<<<<< HEAD
   - PowerUp
+=======
+  - purple
+  - red
+  - yellow
+  - blue
+>>>>>>> origin/kishan
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - enemy
   - Water
   - UI
   - 'Ground '

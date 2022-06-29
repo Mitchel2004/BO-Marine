@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHP : MonoBehaviour
 {
-    public float health = 50f;
+    public float health = 3f;
     [SerializeField] Animator animator;
 
     private void Update()
