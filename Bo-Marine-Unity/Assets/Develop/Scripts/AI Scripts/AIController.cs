@@ -32,7 +32,6 @@ public class AIController : MonoBehaviour
             Debug.Log("agent is null");
         }
     }
-
     private void Update()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
@@ -45,7 +44,6 @@ public class AIController : MonoBehaviour
             isProvroked = true;
         }
     }
-
     void EngageTarget()
     {
         FaceTarget();
@@ -58,14 +56,12 @@ public class AIController : MonoBehaviour
             AttackTarget();
         }
     }
-
     void ChaseTarget()
     {
         GetComponent<Animator>().SetBool("Attack", false);
         GetComponent<Animator>().SetBool("Walking", true);
         agent.SetDestination(target.position);
     }
-
     void AttackTarget()
     {
         if (target != null)
@@ -84,21 +80,19 @@ public class AIController : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
-
     public void TakeDamage(float damageAmount)
     {
         AIHealth -= damageAmount;
         if (AIHealth <= 0)
         {
+            GetComponent<Animator>().SetTrigger("Death");
             Die();
         }
     }
-
     void Die()
     {
         Destroy(this.gameObject);
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
