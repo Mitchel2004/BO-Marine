@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", z);
         
         transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
+        //collisioncheck op tag fog
 
         if (z > 0)
         {
@@ -49,9 +50,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             transform.Translate(new Vector3(0, 0, z) * (walkBackwardsSpeed * Time.deltaTime));
-        }
-        
-
+        }  
     }
 
     //Checks if the player is grounded

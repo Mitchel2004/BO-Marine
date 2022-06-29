@@ -8,6 +8,7 @@ TagManager:
   - EnemyRightFist
   - Ground
   - Radio
+  - Wall
   layers:
   - Default
   - TransparentFX
