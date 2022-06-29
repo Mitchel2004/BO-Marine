@@ -8,13 +8,13 @@ public class enemySwing : MonoBehaviour
     public PlayerHP hpscript;
     private void OnCollisionEnter(Collision other)
     {
-        target target = other.gameObject.GetComponent<target>();
+        PlayerHP target = other.gameObject.GetComponent<PlayerHP>();
         if (target == null)
         {
             Debug.Log("target is null");
         }
 
-        if (other.gameObject.tag == "enemy")
+        if (other.gameObject.tag == "Player")
         {
             target.health -= playerDamage;
             Debug.Log(target.health);
