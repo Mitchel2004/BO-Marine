@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     //Animation for Jumping
     void JumpAnimation()
     {
-        if (Input.GetKey(KeyCode.Space) && canJump)
+        if (Input.GetButton("Jump") && canJump)
         {
             StartCoroutine(Jump()); // Delay for jumping
             animator.SetBool("Jump", true);
