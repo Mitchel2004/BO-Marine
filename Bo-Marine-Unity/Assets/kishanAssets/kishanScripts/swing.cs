@@ -38,6 +38,7 @@ public class swing : MonoBehaviour
         audioSource.Play(0);
         target target = other.gameObject.GetComponent<target>();
         target.health -= PunchDamage;
+        Debug.Log("hij collide");
         if (target == null)
         {
             Debug.Log("target is null");
