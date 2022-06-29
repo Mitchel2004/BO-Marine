@@ -28,7 +28,7 @@ public class HealthBoss : MonoBehaviour
         }
         else
         {
-            bossAnimator.SetTrigger("Dead");
+            bossAnimator.SetTrigger("Death");
             healthAnimator.SetTrigger("Exit");
             healthBar.SetActive(false);
         }
