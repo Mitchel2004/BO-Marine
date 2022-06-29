@@ -33,11 +33,12 @@ public class swing : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter (Collision other)
     {
         audioSource.Play(0);
         target target = other.gameObject.GetComponent<target>();
         target.health -= PunchDamage;
+        Debug.Log("hij collide");
         if (target == null)
         {
             Debug.Log("target is null");

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class target : MonoBehaviour
 {
-    public float health = 5000f;
+    public float health = 7f;
     [SerializeField] Animator animator;
 
     private void Update()
