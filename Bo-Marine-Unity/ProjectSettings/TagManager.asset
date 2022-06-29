@@ -9,11 +9,15 @@ TagManager:
   - Ground
   - Radio
   - Wall
+  - purple
+  - red
+  - yellow
+  - blue
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - enemy
   - Water
   - UI
   - 'Ground '

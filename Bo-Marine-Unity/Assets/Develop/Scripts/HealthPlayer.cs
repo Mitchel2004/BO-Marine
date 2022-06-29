@@ -9,7 +9,7 @@ public class HealthPlayer : MonoBehaviour
     public Animator playerAnimator;
     public Animator healthAnimator;
     public GameObject healthBar;
-
+    
     public float playerHealth = 3f;
     public Transform target;
 

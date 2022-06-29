@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class enemySwing : MonoBehaviour
 {
-    public float playerDamage = 10f;
-    public PlayerHP hpscript;
-    private void OnCollisionEnter(Collision other)
+    public float playerDamage = 1f;
+    public HealthPlayer hpscript;
+    private bool ableToHitPlayer;
+    internal bool hittingPlayer;
+    public AIController aIController;
+
+    private void Start()
     {
-        PlayerHP target = other.gameObject.GetComponent<PlayerHP>();
+        hittingPlayer = false;
+        aIController = GetComponent<AIController>();
+    }
+    private void OnCollisionEnter (Collision other)
+    {
+        HealthPlayer target = other.gameObject.GetComponent<HealthPlayer>();
+    
+        Debug.Log("hij collide");
+
         if (target == null)
         {
             Debug.Log("target is null");
@@ -16,8 +28,18 @@ public class enemySwing : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            target.health -= playerDamage;
-            Debug.Log(target.health);
+            hittingPlayer = true;
+          
+            if (ableToHitPlayer == true)
+            {
+                ableToHitPlayer = false;
+            }
+            if (aIController.isAttacking)
+            {
+                target.TakeDamage(1);
+                Debug.Log(target.playerHealth);
+            }
         }
+        
     }
 }
