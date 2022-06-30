@@ -34,7 +34,6 @@ public class schieten : MonoBehaviour
         {
             reload();
         }
-
     }
 
     void OnDrawGizmosSelected()
@@ -50,7 +49,7 @@ public class schieten : MonoBehaviour
         Gizmos.DrawLine(fpsCam.transform.position, fpsCam.transform.position + pos);
 
         Debug.Log("DRAWLINE");
-        Vector3 pos2 = Quaternion.Euler(ThirdPersonCamera.transform.localEulerAngles.x, transform.localEulerAngles.y, 0) * new Vector3(0,0,1);
+        Vector3 pos2 = Quaternion.Euler(ThirdPersonCamera.transform.localEulerAngles.x, transform.localEulerAngles.y, 0) * new Vector3(0, 0, 1);
     }
 
     private void shoot()
@@ -59,12 +58,12 @@ public class schieten : MonoBehaviour
         RaycastHit hit;
         bool hitSomething = Physics.Raycast(fpsCam.transform.position, Quaternion.Euler(ThirdPersonCamera.transform.localEulerAngles.x, transform.localEulerAngles.y, 0) * new Vector3(0, 0, 1), out hit, range, enemyLayer);
         Debug.DrawLine(fpsCam.transform.position, hit.transform.position, Color.red, 1f);
-        
+
 
         if (hitSomething)
         {
             //Debug.Log(hit.transform.name);
-           
+
 
             target target = hit.transform.GetComponent<target>();
             if (target != null)

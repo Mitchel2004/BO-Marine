@@ -32,7 +32,6 @@ public class AIController : MonoBehaviour
     }
     private void Update()
     {
-
         distanceToTarget = Vector3.Distance(target.position, transform.position);
         if (isProvroked)
         {
@@ -72,7 +71,7 @@ public class AIController : MonoBehaviour
                 GetComponent<Animator>().SetTrigger("Attack");
                 isAttacking = true;
             }
-            Debug.Log("hitting player");
+           
         }
     }
     void FaceTarget()

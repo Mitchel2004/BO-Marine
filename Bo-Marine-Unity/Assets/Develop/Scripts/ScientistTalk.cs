@@ -7,6 +7,8 @@ public class ScientistTalk : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] talkAudio = new AudioClip[4];
     public GameObject scientistUI;
+    public GameObject scientistUI_PC;
+    public GameObject scientistUI_PS;
     public Camera mainCamera;
     public PlayerMovement movement;
     public Animator playerAnimator;
@@ -25,6 +27,19 @@ public class ScientistTalk : MonoBehaviour
 
     void Update()
     {
+        /*Debug.Log(Input.GetJoystickNames().Length);
+
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            scientistUI.SetActive(false);
+            scientistUI = scientistUI_PS;
+        }
+        else
+        {
+            scientistUI.SetActive(false);
+            scientistUI = scientistUI_PC;
+        }*/
+
         scientistUI.transform.rotation = mainCamera.transform.rotation;
 
         playerDistance = Vector3.Distance(transform.position, scientistUI.transform.position);
@@ -33,7 +48,7 @@ public class ScientistTalk : MonoBehaviour
         {
             scientistUI.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Interact"))
             {
                 playerAnimator.SetFloat("Speed", 0f);
                 StartCoroutine(Talk());
