@@ -310,11 +310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b0bcec4a49aef45ac5d1f142860102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpscript: {fileID: 820267273}
   particlesystem: {fileID: 521493179}
+  audioSource: {fileID: 48181597}
   animator: {fileID: 924890295}
   PunchDamage: 0.5
-  audioSource: {fileID: 48181597}
+  healthBoss: {fileID: 0}
 --- !u!54 &48181599
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -652,6 +652,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9db8dd3215f0ee844a5bbafc73c42020, type: 3}
   - {fileID: 8300000, guid: 72659273199a00f4fbc94e1c32a714a3, type: 3}
   scientistUI: {fileID: 0}
+  scientistUI_PC: {fileID: 0}
+  scientistUI_PS: {fileID: 0}
   mainCamera: {fileID: 2081884795}
   movement: {fileID: 228838769}
   playerAnimator: {fileID: 924890295}
@@ -670,10 +672,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 924890295}
-  healthAnimator: {fileID: 0}
+  playerhealthbarAnimator: {fileID: 0}
   healthBar: {fileID: 0}
   playerHealth: 3
-  target: {fileID: 0}
+  enemyAnimator: {fileID: 0}
+  enemySwing: {fileID: 0}
+  enemyHandCollider: {fileID: 0}
+  playerMovement: {fileID: 0}
+  cameraMovement: {fileID: 0}
 --- !u!114 &228838766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6450,8 +6456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 1
-  hpscript: {fileID: 228838765}
-  aIController: {fileID: 0}
+  healthPlayer: {fileID: 0}
+  capsuleCollider: {fileID: 0}
 --- !u!136 &1105095521
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6460,7 +6466,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105095518}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.0062783062
   m_Height: 0.029289814
@@ -7267,8 +7273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 1
-  hpscript: {fileID: 228838765}
-  aIController: {fileID: 0}
+  healthPlayer: {fileID: 0}
+  capsuleCollider: {fileID: 0}
 --- !u!1001 &1764769744
 PrefabInstance:
   m_ObjectHideFlags: 0

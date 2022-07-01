@@ -17,6 +17,25 @@ public class HealthPlayer : MonoBehaviour
     public Collider enemyHandCollider;
     public PlayerMovement playerMovement;
     public CameraMovement cameraMovement;
+
+    private bool playerIsDead = false;
+
+    public void Start()
+    {
+        GameObject[] _enemyFindArray = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject gameobjectToCheck in _enemyFindArray)
+        {
+            if (gameobjectToCheck.transform.root.CompareTag("enemy"))
+            {
+                GameObject _enemyRef = gameobjectToCheck.transform.root.gameObject;
+                enemySwing = _enemyRef.GetComponentInChildren<enemySwing>();
+                break;
+            }
+        }
+    }
+
+
     public void TakeDamage(float amount)
     {
         playerHealth -= amount;
@@ -31,18 +50,22 @@ public class HealthPlayer : MonoBehaviour
         }
         else
         {
-            playerAnimator.SetTrigger("Dead");
-            playerhealthbarAnimator.SetTrigger("Exit");
+            if (!playerIsDead)
+            {
+                playerIsDead = true;
+                playerAnimator.StopPlayback();
+                playerAnimator.Play("Base Layer.Dead", 0, 0f);
+                playerhealthbarAnimator.SetTrigger("Exit");
 
-            enemyHandCollider.enabled = false;
-            enemyAnimator.enabled = false;
-            enemySwing.enabled = false;
-            playerMovement.enabled = false;
-            cameraMovement.enabled = false;
-            
+                enemyHandCollider.enabled = false;
+                enemyAnimator.enabled = false;
+                enemySwing.enabled = false;
+                playerMovement.enabled = false;
+                cameraMovement.enabled = false;
 
-            healthBar.SetActive(false);
-            StartCoroutine(Restart());
+                healthBar.SetActive(false);
+                StartCoroutine(Restart());
+            }
         }
     }
 

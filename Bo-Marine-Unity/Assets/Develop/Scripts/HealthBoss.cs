@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBoss : MonoBehaviour
 {
@@ -13,7 +14,12 @@ public class HealthBoss : MonoBehaviour
     float healthBarRange = 45f;
     float playerDistance;
 
+    [SerializeField]
+    Sprite emptyHealthbar;
+
     public AIController aIController;
+
+    private bool bosshealthbaranimatorOverride = false;
  
     public void TakeDamage(float amount)
     {
@@ -29,11 +35,11 @@ public class HealthBoss : MonoBehaviour
         }
         else 
         {
-            bossAnimator.SetTrigger("Death");
-            bosshealthbarAnimator.SetTrigger("Exit");
-            aIController.enabled = false;
+            aIController.SetIsDead(true);
+            bossAnimator.StopPlayback();
+            bossAnimator.Play("Base Layer.Death",0,0f);
+            bosshealthbaranimatorOverride = true;
             healthBar.SetActive(false);
-            Debug.Log("WHAHAHA ik leef voor eeuwig :))");
         }
     }
 
@@ -43,7 +49,10 @@ public class HealthBoss : MonoBehaviour
 
         if (playerDistance <= healthBarRange)
         {
-            healthBar.SetActive(true);
+            if (!bosshealthbaranimatorOverride)
+            {
+                healthBar.SetActive(true);
+            }
         }
         else
         {

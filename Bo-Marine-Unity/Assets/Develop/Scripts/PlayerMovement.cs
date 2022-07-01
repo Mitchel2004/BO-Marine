@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float jumpHeight = 0.1f;
-    bool canJump;
+    private bool canJump;
+    private bool isJumping;
 
     void Start()
     {
@@ -75,8 +76,9 @@ public class PlayerMovement : MonoBehaviour
     //Animation for Jumping
     void JumpAnimation()
     {
-        if (Input.GetButton("Jump") && canJump)
+        if (Input.GetButton("Jump") && canJump && !isJumping)
         {
+            isJumping = true;
             StartCoroutine(Jump()); // Delay for jumping
             animator.SetBool("Jump", true);
         }
@@ -92,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         rb.velocity = new Vector3(0, jumpForce, 0);
-        canJump = false;
+        isJumping = false;
     }
 
     //Aim with a linerenderer
