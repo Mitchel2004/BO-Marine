@@ -60,7 +60,7 @@ public class SideAIController : MonoBehaviour
 
     void ChaseTarget()
     {
-        animator.SetBool("Run",true);
+        animator.SetBool("Run", true);
         agent.SetDestination(target.position);
     }
 
