@@ -42,7 +42,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", z);
         
         transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
-        //collisioncheck op tag fog
+
+//collisioncheck op tag "fog"
+        transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
+
 
         if (z > 0)
         {
