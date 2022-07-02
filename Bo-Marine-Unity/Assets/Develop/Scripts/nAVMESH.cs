@@ -16,7 +16,7 @@ public class nAVMESH : MonoBehaviour
     [Header("Attacking")]
     [SerializeField] float timeBetweenAttacks;
     //[SerializeField] GameObject projectile;
-    bool alreadyAttacked;
+    public bool alreadyAttacked;
     public float amount = 5;
 
     [Header("States")]

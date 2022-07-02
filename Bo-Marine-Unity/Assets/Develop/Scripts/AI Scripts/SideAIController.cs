@@ -7,18 +7,24 @@ public class SideAIController : MonoBehaviour
     [SerializeField] float chaseRange = 5f;
     public Transform target;
     [SerializeField] float turnSpeed = 5f;
-    [SerializeField] Animator animator;
-
-    //Damage for the player
-    internal bool hit;
+    private Animator animator;
 
     NavMeshAgent agent;
+
     float distanceToTarget = Mathf.Infinity;
+
     bool isProvroked = false;
+    public bool isDead = false;
+    public bool isAttacking = false;
+
+    private SideEnemySwing sideEnemySwing;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        sideEnemySwing = GetComponentInChildren<SideEnemySwing>();
+
         if (agent == null)
         {
             agent = GetComponent<NavMeshAgent>();
@@ -29,7 +35,7 @@ public class SideAIController : MonoBehaviour
     private void Update()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
-        if (isProvroked)
+        if (isProvroked && !isDead) 
         {
             EngageTarget();
         }
@@ -54,8 +60,7 @@ public class SideAIController : MonoBehaviour
 
     void ChaseTarget()
     {
-        animator.SetBool("Attack", false);
-        animator.SetTrigger("Run");
+        animator.SetBool("Run",true);
         agent.SetDestination(target.position);
     }
 
@@ -64,10 +69,12 @@ public class SideAIController : MonoBehaviour
         if (target != null)
         {
             agent.SetDestination(target.position);
-            if (agent.remainingDistance < 6.1f)
+            if (agent.remainingDistance < 5.1f)
             {
-                animator.SetTrigger("Run");
-                animator.SetBool("Attack", false);
+                animator.SetBool("Run", false);
+                animator.SetTrigger("Attack_Hit");
+                isAttacking = true;
+                sideEnemySwing.Side_EnableArmCollider(3f);
             }
         }  
     }
@@ -82,5 +89,9 @@ public class SideAIController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+    public void SetIsDead(bool newIsDead)
+    {
+        isDead = newIsDead;
     }
 }

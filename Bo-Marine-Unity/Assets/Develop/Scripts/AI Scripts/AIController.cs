@@ -13,12 +13,11 @@ public class AIController : MonoBehaviour
     [Header("Speeds")]
     [SerializeField] float turnSpeed = 5f;
 
-    public bool isAttacking = false;
-    //hit the player with AI
-    internal bool hit;
-
     NavMeshAgent agent;
+
     float distanceToTarget = Mathf.Infinity;
+
+    public bool isAttacking = false;
     bool isProvroked = false;
     public bool isDead = false;
 
