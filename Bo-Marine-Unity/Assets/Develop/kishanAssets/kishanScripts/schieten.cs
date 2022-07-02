@@ -21,6 +21,7 @@ public class schieten : MonoBehaviour
     {
         if (canFire == true && bullets > 0 && Input.GetButtonDown("Fire2"))
         {
+            print("test");
             shoot();
             animator.SetTrigger("Shoot");
         }
@@ -62,7 +63,7 @@ public class schieten : MonoBehaviour
 
         if (hitSomething)
         {
-            //Debug.Log(hit.transform.name);
+            Debug.Log(hit.transform.name);
 
 
             target target = hit.transform.GetComponent<target>();
