@@ -4,30 +4,42 @@ using UnityEngine;
 using UnityEngine.AI;
 public class SideAIController : MonoBehaviour
 {
-    [SerializeField] Transform target;
     [SerializeField] float chaseRange = 5f;
+    public Transform target;
     [SerializeField] float turnSpeed = 5f;
+    private Animator animator;
 
     NavMeshAgent agent;
-    float distanceToTarget = Mathf.Infinity;
-    bool isProvroked = false;
 
-    //Damage for the player
-    public float playerDamage = 100f;
+    float distanceToTarget = Mathf.Infinity;
+
+    bool isProvroked = false;
+    public bool isDead = false;
+    public bool isAttacking = false;
+
+    private SideEnemySwing sideEnemySwing;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        sideEnemySwing = GetComponentInChildren<SideEnemySwing>();
+
+        if (agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+            Debug.Log("agent is null");
+        }
     }
 
     private void Update()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
-        if (isProvroked)
+        if (isProvroked && !isDead) 
         {
-            EngageTarget(); 
+            EngageTarget();
         }
-        else if(distanceToTarget <= chaseRange)
+        else if (distanceToTarget <= chaseRange)
         {
             isProvroked = true;
         }
@@ -48,25 +60,38 @@ public class SideAIController : MonoBehaviour
 
     void ChaseTarget()
     {
-        GetComponent<Animator>().SetBool("Attack", false);
-        GetComponent<Animator>().SetTrigger("Run");
+        animator.SetBool("Run", true);
         agent.SetDestination(target.position);
     }
 
     void AttackTarget()
     {
-        GetComponent<Animator>().SetBool("Attack", true);
-        Debug.Log(name + " has seeked and is destroying " + target.name);
+        if (target != null)
+        {
+            agent.SetDestination(target.position);
+            if (agent.remainingDistance < 5.1f)
+            {
+                animator.SetBool("Run", false);
+                animator.SetTrigger("Attack_Hit");
+                isAttacking = true;
+                sideEnemySwing.Side_EnableArmCollider(3f);
+            }
+        }  
     }
     void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+    public void SetIsDead(bool newIsDead)
+    {
+        isDead = newIsDead;
     }
 }

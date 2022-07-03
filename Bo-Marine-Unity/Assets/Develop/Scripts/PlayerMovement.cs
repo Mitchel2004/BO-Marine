@@ -10,20 +10,26 @@ public class PlayerMovement : MonoBehaviour
     public Transform range;
     public Animator animator;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] bool playAudio;
+
     [SerializeField] float walkSpeed = 10f;
     [SerializeField] float walkBackwardsSpeed = 5f;
     [SerializeField] float rotateSpeed = 100f;
 
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float jumpHeight = 0.1f;
-    bool canJump = true;
-    bool isJumping = false;
+    private bool canJump;
+    private bool isJumping;
 
+    float x;
+    float z;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         lr = GetComponent<LineRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -37,13 +43,18 @@ public class PlayerMovement : MonoBehaviour
     //Makes player walk with the axises 
     void Walk()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        FootStepSound();
+
+         x = Input.GetAxis("Horizontal");
+         z = Input.GetAxis("Vertical");
 
         animator.SetFloat("Speed", z);
         
         transform.Rotate(new Vector3(0, x, 0) * (rotateSpeed * Time.deltaTime));
-        //collisioncheck op tag fog
+
+//collisioncheck op tag "fog"
+        transform.Translate(new Vector3(0, 0, z) * (walkSpeed * Time.deltaTime));
+
 
         if (z > 0)
         {
@@ -55,18 +66,25 @@ public class PlayerMovement : MonoBehaviour
         }  
     }
 
+    void FootStepSound()
+    {
+        if ((z > 0 || x > 0 || x < 0 || z < 0) && playAudio)
+        {
+            audioSource.Play();
+            playAudio = false;
+        }
+        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+        {
+            playAudio = true;
+            audioSource.Stop();
+        }
+    }
+
     //Checks if the player is grounded
     void GroundedCheck()
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, Vector3.down);
-
-        Debug.DrawRay(transform.position, 
-            new Vector3(
-                transform.position.x * Vector3.down.x * jumpHeight,
-                transform.position.y * Vector3.down.y * jumpHeight,
-                transform.position.z * Vector3.down.z * jumpHeight
-                ));
 
         if (Physics.Raycast(ray, out hit, jumpHeight))
         {
@@ -77,11 +95,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 canJump = true;
-                return;
             }
-        } else
-        {
-            canJump = false;
         }
     }
 
@@ -90,10 +104,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButton("Jump") && canJump && !isJumping)
         {
-            print(isJumping);
             isJumping = true;
             StartCoroutine(Jump()); // Delay for jumping
-            animator.SetTrigger("Jump");
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
         }
     }
 

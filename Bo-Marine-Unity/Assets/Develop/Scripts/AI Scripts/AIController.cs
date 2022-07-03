@@ -13,18 +13,23 @@ public class AIController : MonoBehaviour
     [Header("Speeds")]
     [SerializeField] float turnSpeed = 5f;
 
-    public bool isAttacking = false;
-    //hit the player with AI
-    internal bool hit;
-
     NavMeshAgent agent;
+
     float distanceToTarget = Mathf.Infinity;
+
+    public bool isAttacking = false;
     bool isProvroked = false;
+    public bool isDead = false;
+
+    private enemySwing enemySwing;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        if(agent == null)
+
+        enemySwing = GetComponentInChildren<enemySwing>();
+
+        if (agent == null)
         {
             agent = GetComponent<NavMeshAgent>();
             Debug.Log("agent is null");
@@ -33,7 +38,7 @@ public class AIController : MonoBehaviour
     private void Update()
     {
         distanceToTarget = Vector3.Distance(target.position, transform.position);
-        if (isProvroked)
+        if (isProvroked && !isDead)
         {
             EngageTarget();
         }
@@ -70,6 +75,7 @@ public class AIController : MonoBehaviour
                 GetComponent<Animator>().SetBool("Walking", false);
                 GetComponent<Animator>().SetTrigger("Attack");
                 isAttacking = true;
+                enemySwing.EnableArmCollider(3f);
             }
            
         }
@@ -85,5 +91,10 @@ public class AIController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+
+    public void SetIsDead(bool newIsDead)
+    {
+        isDead = newIsDead;
     }
 }
