@@ -16,7 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float jumpHeight = 0.1f;
-    bool canJump;
+    bool canJump = true;
+    bool isJumping = false;
+
 
     void Start()
     {
@@ -59,6 +61,13 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(transform.position, Vector3.down);
 
+        Debug.DrawRay(transform.position, 
+            new Vector3(
+                transform.position.x * Vector3.down.x * jumpHeight,
+                transform.position.y * Vector3.down.y * jumpHeight,
+                transform.position.z * Vector3.down.z * jumpHeight
+                ));
+
         if (Physics.Raycast(ray, out hit, jumpHeight))
         {
             if (hit.collider == null)
@@ -68,21 +77,23 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 canJump = true;
+                return;
             }
+        } else
+        {
+            canJump = false;
         }
     }
 
     //Animation for Jumping
     void JumpAnimation()
     {
-        if (Input.GetButton("Jump") && canJump)
+        if (Input.GetButton("Jump") && canJump && !isJumping)
         {
+            print(isJumping);
+            isJumping = true;
             StartCoroutine(Jump()); // Delay for jumping
-            animator.SetBool("Jump", true);
-        }
-        else
-        {
-            animator.SetBool("Jump", false);
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -92,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         rb.velocity = new Vector3(0, jumpForce, 0);
-        canJump = false;
+        isJumping = false;
     }
 
     //Aim with a linerenderer
