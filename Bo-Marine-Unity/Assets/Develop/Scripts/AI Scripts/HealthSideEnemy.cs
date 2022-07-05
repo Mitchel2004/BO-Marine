@@ -5,7 +5,24 @@ using UnityEngine.UI;
 
 public class HealthSideEnemy : MonoBehaviour
 {
-    public Animator sideBossAnimator;
+    [Header("Damage")]
+    public float sideEnemyHealth = 3f;
+    public float sideEnemydamage = 1f;
+
+    [Header("Animator")]
+    public Animator sideEnemyAnimator;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            sideEnemyHealth -= sideEnemydamage;
+        }
+    }
+
+
+
+
+    /*public Animator sideBossAnimator;
     public GameObject healthBar;
     public Transform player;
 
@@ -36,5 +53,5 @@ public class HealthSideEnemy : MonoBehaviour
             Side_EnemyhealthbaranimatorOverride = true;
             healthBar.SetActive(false);
         }
-    }
+    }*/
 }

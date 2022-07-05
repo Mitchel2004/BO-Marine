@@ -5,9 +5,10 @@ using UnityEngine.AI;
 public class SideAIController : MonoBehaviour
 {
     [SerializeField] float chaseRange = 5f;
+
     public Transform target;
+
     [SerializeField] float turnSpeed = 5f;
-    private Animator animator;
 
     NavMeshAgent agent;
 
@@ -60,7 +61,7 @@ public class SideAIController : MonoBehaviour
 
     void ChaseTarget()
     {
-        animator.SetBool("Run", true);
+        GetComponent<Animator>().SetBool("Run", true);
         agent.SetDestination(target.position);
     }
 
@@ -71,8 +72,8 @@ public class SideAIController : MonoBehaviour
             agent.SetDestination(target.position);
             if (agent.remainingDistance < 5.1f)
             {
-                animator.SetBool("Run", false);
-                animator.SetTrigger("Attack_Hit");
+                GetComponent<Animator>().SetBool("Run", false);
+                GetComponent<Animator>().SetTrigger("Attack_Hit");
                 isAttacking = true;
                 sideEnemySwing.Side_EnableArmCollider(3f);
             }

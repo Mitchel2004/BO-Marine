@@ -61,7 +61,7 @@ public class AIController : MonoBehaviour
     }
     void ChaseTarget()
     {
-        GetComponent<Animator>().SetBool("Attack", false);
+        GetComponent<Animator>().SetTrigger("Attack");
         GetComponent<Animator>().SetBool("Walking", true);
         agent.SetDestination(target.position);
     }
