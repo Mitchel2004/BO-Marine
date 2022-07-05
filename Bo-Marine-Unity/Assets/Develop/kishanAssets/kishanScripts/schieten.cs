@@ -26,11 +26,6 @@ public class schieten : MonoBehaviour
             animator.SetTrigger("Shoot");
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            canFire = true;
-        }
-
         if (bullets < 2)
         {
             reload();
@@ -55,27 +50,7 @@ public class schieten : MonoBehaviour
 
     private void shoot()
     {
-        timer -= Time.deltaTime;
-        RaycastHit hit;
-        bool hitSomething = Physics.Raycast(fpsCam.transform.position, Quaternion.Euler(ThirdPersonCamera.transform.localEulerAngles.x, transform.localEulerAngles.y, 0) * new Vector3(0, 0, 1), out hit, range, enemyLayer);
-        Debug.DrawLine(fpsCam.transform.position, hit.transform.position, Color.red, 1f);
-
-
-        if (hitSomething)
-        {
-            Debug.Log(hit.transform.name);
-
-
-            target target = hit.transform.GetComponent<target>();
-            if (target != null)
-            {
-                target.health -= ShootDamage;
-                Debug.Log(target.health);
-            }
-
-            Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
-        }
-        /*if (timer <= 0)
+        if (timer <= 0)
         {
             flash.Play();
 
@@ -96,8 +71,17 @@ public class schieten : MonoBehaviour
             }
             bullets--;
             timer = 3.5f;
-        }*/
+        }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.transform.root.CompareTag("PowerUp"))
+        {
+            //Destroy(other.gameObject);
+            canFire = true;
+        }
     }
 
     private void reload()
