@@ -19,8 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float jumpHeight = 0.1f;
-    private bool canJump;
-    private bool isJumping;
+    internal bool canJump;
 
     float x;
     float z;
@@ -35,15 +34,19 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Walk();
-        GroundedCheck();
-        JumpAnimation();
+        //GroundedCheck();
         Pointer();
+    }
+
+    void Update()
+    {
+        JumpAnimation();
     }
 
     //Makes player walk with the axises 
     void Walk()
     {
-        FootStepSound();
+        //FootStepSound();
 
          x = Input.GetAxis("Horizontal");
          z = Input.GetAxis("Vertical");
@@ -66,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         }  
     }
 
-    void FootStepSound()
+    /*void FootStepSound()
     {
         if ((z > 0 || x > 0 || x < 0 || z < 0) && playAudio)
         {
@@ -78,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             playAudio = true;
             audioSource.Stop();
         }
-    }
+    }*/
 
     //Checks if the player is grounded
     void GroundedCheck()
@@ -102,15 +105,29 @@ public class PlayerMovement : MonoBehaviour
     //Animation for Jumping
     void JumpAnimation()
     {
-        if (Input.GetButton("Jump") && canJump && !isJumping)
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        if (Physics.Raycast(ray, out hit, jumpHeight))
         {
-            isJumping = true;
-            StartCoroutine(Jump()); // Delay for jumping
-            animator.SetBool("Jump", true);
-        }
-        else
-        {
-            animator.SetBool("Jump", false);
+            if (hit.collider == null)
+            {
+                canJump = false;
+            }
+            else
+            {
+                canJump = true;
+            }
+
+            if (Input.GetButtonDown("Jump") && canJump)
+            {
+                StartCoroutine(Jump()); // Delay for jumping
+                animator.SetBool("Jump Bool", true);
+            }
+            else
+            {
+                animator.SetBool("Jump Bool", false);
+            }
         }
     }
 
@@ -120,7 +137,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         rb.velocity = new Vector3(0, jumpForce, 0);
-        isJumping = false;
     }
 
     //Aim with a linerenderer
