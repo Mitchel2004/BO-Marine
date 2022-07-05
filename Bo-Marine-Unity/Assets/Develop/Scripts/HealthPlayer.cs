@@ -17,6 +17,7 @@ public class HealthPlayer : MonoBehaviour
     public Collider enemyHandCollider;
     public PlayerMovement playerMovement;
     public CameraMovement cameraMovement;
+    public SideAIController sideAI;
 
     private bool playerIsDead = false;
 
@@ -62,6 +63,7 @@ public class HealthPlayer : MonoBehaviour
                 enemySwing.enabled = false;
                 playerMovement.enabled = false;
                 cameraMovement.enabled = false;
+                sideAI.enabled = false;
 
                 healthBar.SetActive(false);
                 StartCoroutine(Restart());

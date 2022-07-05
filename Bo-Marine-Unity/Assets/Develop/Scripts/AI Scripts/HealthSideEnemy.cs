@@ -11,15 +11,19 @@ public class HealthSideEnemy : MonoBehaviour
 
     [Header("Animator")]
     public Animator sideEnemyAnimator;
-    private void OnCollisionEnter(Collision collision)
+
+    public Transform player;
+
+    public void TakeDamage(float damage)
     {
-        if(collision.gameObject.tag == "Player")
+        sideEnemyHealth -= damage;
+
+        if (sideEnemyHealth <= 0f)
         {
-            sideEnemyHealth -= sideEnemydamage;
+            sideEnemyAnimator.Play("Base Layer.Death", 0, 0f);
+            GetComponent<Collider>().enabled = false;
         }
     }
-
-
 
 
     /*public Animator sideBossAnimator;

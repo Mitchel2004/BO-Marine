@@ -76,6 +76,7 @@ public class SideAIController : MonoBehaviour
                 GetComponent<Animator>().SetTrigger("Attack_Hit");
                 isAttacking = true;
                 sideEnemySwing.Side_EnableArmCollider(3f);
+                Debug.Log("Is Attacking");
             }
         }  
     }
