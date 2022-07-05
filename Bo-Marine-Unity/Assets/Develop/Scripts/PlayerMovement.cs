@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     //Makes player walk with the axises 
     void Walk()
     {
-        FootStepSound();
+        //FootStepSound();
 
          x = Input.GetAxis("Horizontal");
          z = Input.GetAxis("Vertical");
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }  
     }
 
-    void FootStepSound()
+    /*void FootStepSound()
     {
         if ((z > 0 || x > 0 || x < 0 || z < 0) && playAudio)
         {
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             playAudio = true;
             audioSource.Stop();
         }
-    }
+    }*/
 
     //Checks if the player is grounded
     void GroundedCheck()

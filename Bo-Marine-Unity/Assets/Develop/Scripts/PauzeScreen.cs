@@ -8,7 +8,7 @@ public class PauzeScreen : MonoBehaviour
     [SerializeField] Canvas canvas;
     [SerializeField] bool TogglePauze;
     public bool cursorVisible;
-
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -21,6 +21,7 @@ public class PauzeScreen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && TogglePauze == false)
         {
+            audioSource.Pause();
             canvas.enabled = true;
             TogglePauze = true;
             cursorVisible = true;
@@ -39,6 +40,7 @@ public class PauzeScreen : MonoBehaviour
 
     public void Resume()
     {
+        audioSource.UnPause();
         canvas.enabled = false;
         TogglePauze = false;
         cursorVisible = false;
