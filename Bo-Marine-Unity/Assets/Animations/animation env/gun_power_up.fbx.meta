@@ -6,18 +6,6 @@ ModelImporter:
   - first:
       74: -1322219951699147493
     second: Roundcube.002|Roundcube.002Action.004
-  - first:
-      74: -2462153043954124971
-    second: Roundcube.002|Roundcube.002Action
-  - first:
-      74: 5449352630536686112
-    second: Roundcube.002|Roundcube.002Action.001
-  - first:
-      74: -5442663974155404750
-    second: Roundcube.002|Roundcube.002Action.002
-  - first:
-      74: 3795603448433890676
-    second: Roundcube.002|Roundcube.002Action.003
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -45,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Roundcube.002|Roundcube.002Action.004
+      takeName: Roundcube.002|Roundcube.002Action.004
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
