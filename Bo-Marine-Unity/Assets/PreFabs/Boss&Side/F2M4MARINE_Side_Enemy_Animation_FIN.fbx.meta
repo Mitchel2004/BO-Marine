@@ -21,6 +21,18 @@ ModelImporter:
   - first:
       74: -6923672916248775062
     second: root|Tpose
+  - first:
+      74: 6049085905718104747
+    second: Death_Loop
+  - first:
+      74: 5522812681064789136
+    second: Run
+  - first:
+      74: 4348485665485846014
+    second: Death
+  - first:
+      74: 3981366446651240273
+    second: Attack_Hit
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -79,35 +91,6 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: root|Attack_HIT_animation
-      takeName: root|Attack_HIT_animation
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 75
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: root|Attack_MISS_animation
       takeName: root|Attack_MISS_animation
       internalID: 0
@@ -137,11 +120,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: root|Death_Animation
-      takeName: root|Death_Animation
+      name: root|Tpose
+      takeName: root|Tpose
       internalID: 0
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -166,10 +149,39 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: root|RUN _animation
-      takeName: root|RUN _animation
+      name: Death_Loop
+      takeName: root|ALL_Animations
       internalID: 0
-      firstFrame: 0
+      firstFrame: 366
+      lastFrame: 369
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: root|ALL_Animations
+      internalID: 0
+      firstFrame: 3
       lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
@@ -195,11 +207,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: root|Tpose
-      takeName: root|Tpose
+      name: Death
+      takeName: root|ALL_Animations
       internalID: 0
-      firstFrame: 0
-      lastFrame: 1
+      firstFrame: 290
+      lastFrame: 370
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack_Hit
+      takeName: root|ALL_Animations
+      internalID: 0
+      firstFrame: 100
+      lastFrame: 175
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

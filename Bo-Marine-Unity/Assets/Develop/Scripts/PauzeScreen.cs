@@ -1,0 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PauzeScreen : MonoBehaviour
+{
+    [SerializeField] Canvas canvas;
+    [SerializeField] bool TogglePauze;
+    public bool cursorVisible;
+    public AudioSource audioSource;
+
+    private void Start()
+    {
+        canvas.enabled = false;
+        TogglePauze = false;
+        cursorVisible = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && TogglePauze == false)
+        {
+            audioSource.Pause();
+            canvas.enabled = true;
+            TogglePauze = true;
+            cursorVisible = true;
+            Pause();
+
+        }
+
+        CursorV();
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        canvas.enabled = true;
+    }
+
+    public void Resume()
+    {
+        audioSource.UnPause();
+        canvas.enabled = false;
+        TogglePauze = false;
+        cursorVisible = false;
+        Time.timeScale = 1f;
+    }
+
+    public void Home(int SceneID)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneID);
+    }
+
+    void CursorV()
+    {
+        if (cursorVisible == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+}
