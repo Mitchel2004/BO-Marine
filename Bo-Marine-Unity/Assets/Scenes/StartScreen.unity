@@ -670,7 +670,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: ca673dc44b90ebf4383e8682fbb0fecb, type: 3}
     isLoop: 1
     playOnAwake: 1
-    volume: 0.1
+    volume: 0.02
   - audioType: 0
     source: {fileID: 0}
     clipName: SFX
